@@ -1,0 +1,31 @@
+{% extends '/base_template/left_right.html' %}
+
+
+{% block metakeywords %}
+{% endblock %}
+
+
+{% block title %}
+	{{blog.title}} - {{super()}}
+{% endblock %}
+
+
+{% block beforehead %}
+{% endblock %}
+
+
+{% block content %}
+	<div class="blog-post">
+		<h2 class="blog-post-title">{{ blog.title }}</h2>
+		<p class="blog-post-meta">{{ blog.created_at|datetime }}</p>
+		{{ blog.content|safe }}
+		</div>
+{% endblock %}
+
+
+{% block funcript %}
+<script type="text/javascript">
+    navactive = document.getElementById("blogs")
+    navactive.className = "active"
+</script>
+{% endblock %}

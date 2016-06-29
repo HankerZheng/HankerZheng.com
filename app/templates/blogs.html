@@ -1,0 +1,60 @@
+{% extends '/base_template/left_right.html' %}
+
+
+{% block metakeywords %}
+{% endblock %}
+
+
+{% block title %}
+    Blogs - {{super()}}
+{% endblock %}
+
+
+{% block beforehead %}
+{% endblock %}
+
+
+{% block left_content %}
+    {% for blog in blogs %}
+        <h2 class="blog-title"><a href="/blog/{{ blog.cr_year }}/{{ blog.cr_month }}/{{ blog.id }}">
+            {{ blog.title }}
+        </a></h2>
+        <h5><span class="glyphicon glyphicon-time"></span> Post at {{ blog.created_at|datetime }}</h5>
+        <h5><span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span></h5><br>
+        <p class="blog-summary">{{ blog.summary }}</p>
+        <p><a href="/blog/{{ blog.cr_year }}/{{ blog.cr_month }}/{{ blog.id }}">Read more...<i class="uk-icon-angle-double-right"></i></a></p>
+       <hr />
+    {% endfor %}
+
+    {% if page.page_count > 1 %}
+    <nav id="myPagination">
+      <ul class="pagination">
+        {% for x in range(page.page_count) %}
+            {% if (x+1) == page.page_index %}
+                <li class="active">
+            {% else %}
+                <li>
+            {% endif %}
+                    <a href="?page={{x+1}}">{{x+1}}</a>
+                </li>
+        {% endfor %}
+      </ul>
+    </nav>
+    {% endif %}
+{% endblock %}
+
+{% block right_content %}
+{% endblock %}
+
+
+{% block funcript %}
+<script type="text/javascript">
+    navactive = document.getElementById("blogs");
+    navactive.className = "active";
+    $(document).ready(function(){
+        $("#myPagination li a").attr("href", function(i, origValue){
+            return window.location.pathname+origValue;
+        });
+    });
+</script>
+{% endblock %}

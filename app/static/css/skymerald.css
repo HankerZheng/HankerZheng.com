@@ -1,0 +1,122 @@
+a {
+  color: inherit;
+}
+a:hover{
+  color: inherit;
+}
+
+#content-container{
+  padding: 30px 10px 30px 10px;
+  border-left: 1px solid #E0E0E0;
+  border-right: 1px solid #E0E0E0;
+}
+/* blogs-concerning */
+.left-block {
+  background-color:transparent; 
+  box-shadow:2px 2px #F0F0F0
+}
+.right-block{
+  background-color:transparent;
+  border-color: #ecf0f1;
+}
+.blog-title{
+  font-family: Georgia;
+}
+
+.blog-summary{
+  font-family: Arial;
+}
+
+/* website icon */
+.iconlogo{
+  border: 2px;
+  border-style: solid;
+  border-radius: 3px 20px 3px 12px;
+  padding: 3px 3px 3px 7px;
+  font-family: Book Antiqua;
+  vertical-align:-20%;
+  font-variant:small-caps;
+  font-size:120%;
+}
+/* back-to-top icon */
+.back-to-top {
+  color: grey;
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+}
+.back-to-top:visited{
+  color:inherit;
+}
+.back-to-top:hover{
+  text-shadow: 0px 0px 4px #C0C0C0;
+}
+.back-to-top:active{
+  color:inherit;
+}
+
+/* navigation bar */
+.navbar {
+  border-radius: 0;
+  margin-bottom: 0;
+  border: 0;
+  font-size: 11px !important;
+  font-style: bold;
+  letter-spacing: 2px;
+  min-height: 54px;
+}
+/* affix-converning */
+.affix {
+    top: 0;
+    width: 100%;
+}
+.affix + .container-fluid {
+    padding-top: 54px;
+    z-index: -1
+}
+.jumbotron {
+  padding-top: 35px;
+  padding-bottom: 20px;
+  margin: 0;
+  background-color: #E0E0E0;
+  height: 300px;
+}
+
+
+/*photo gallery*/
+.photo-gallery {
+  padding:0 0 0 0;
+  margin:0 0 40px 0;
+  text-align: center;
+}
+.photo-gallery .photo-item {
+  list-style:none;
+  padding: 0;
+  align-content: center;
+  -webkit-transition: transform 0.2s; /* For Safari 3.1 to 6.0 */
+  transition: transform 0.2s;
+}
+.photo-gallery .photo-item:hover {
+  z-index: 1;
+  -ms-transform: scale(1.1, 1.1); /* IE 9 */
+  -webkit-transform: scale(1.1, 1.1); /* Safari */
+  transform: scale(1.1, 1.1);
+}
+
+/* footer */
+.footer-text {
+  color: black;
+  font-size: 17px;
+  font-family: Georgia;
+  opacity:0.60;filter:alpha(opacity=60);
+  text-align: center;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height: auto;}
+}

@@ -1,0 +1,42 @@
+{% extends '/base_template/base.html' %}
+
+
+{% block metakeywords %}
+{% endblock %}
+
+
+{% block title %}
+    About - {{super()}}
+{% endblock %}
+
+
+{% block beforehead %}
+{% endblock %}
+
+
+{% block content %}
+<div class="container" style="padding: 20px;">
+  <div class="btn-group btn-group-justified" align="center">
+    <a class="btn btn-default" href="/manage/blog_create" title="Create a new blog!">
+      <i class="fa fa-newspaper-o fa-2x" aria-hidden="true"></i>
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </a>
+    <a class="btn btn-default" href="/manage/blog_edit" title="Edit old blogs">
+      <i class="fa fa-newspaper-o fa-2x" aria-hidden="true"></i>
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+    </a>
+    <a class="btn btn-default" href="/manage/photo_create" title="Create a new photo!">
+      <i class="fa fa-picture-o fa-2x" aria-hidden="true"></i>
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </a>
+    <a class="btn btn-default" href="/manage/photo_edit" title="Edit old photos">
+      <i class="fa fa-picture-o fa-2x" aria-hidden="true"></i>
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block funcript %}
+{% endblock %}

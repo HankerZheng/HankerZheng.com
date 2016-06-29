@@ -1,0 +1,34 @@
+{% extends '/base_template/base.html' %}
+
+
+{% block metakeywords %}
+{% endblock %}
+
+
+{% block title %}
+    About - {{super()}}
+{% endblock %}
+
+
+{% block beforehead %}
+{% endblock %}
+
+
+{% block content %}
+    {% for photo in photos %}
+        <div class="blog-post">
+            <img src="{{photo.path}}" style="height:500px;width:500px;">
+            <p class="blog-post-title">{{ photo.title }}</p>
+            <p>{{ photo.descript }}</p>
+            <p class="blog-post-meta">{{ photo.created_at|datetime }} at {{ photo.loc_name}}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+
+{% block funcript %}
+<script type="text/javascript">
+    navactive = document.getElementById("about")
+    navactive.className = "active"
+</script>
+{% endblock %}

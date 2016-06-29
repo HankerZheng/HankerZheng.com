@@ -1,0 +1,29 @@
+# Windows:
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Python:
+*.py[cod]
+*.so
+*.egg
+*.egg-info
+dist
+build
+
+# bootstrap, font-awesome
+app/static/css/bootstrap*
+app/static/css/font-awesome*
+app/static/fonts/*
+app/static/js/bootstrap*
+app/static/js/jquery-1*
+
+# photos
+app/static/photos/*
+
+# less ans scss
+app/static/less/*
+app/static/scss/*
+
+# test
+app/test/*

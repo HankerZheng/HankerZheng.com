@@ -1,0 +1,73 @@
+{% extends '/base_template/base.html' %}
+
+
+{% block metakeywords %}
+{% endblock %}
+
+
+{% block title %}
+    Photographs - {{super()}}
+{% endblock %}
+
+
+{% block beforehead %}
+{% endblock %}
+
+
+{% block content %}
+<ul class="photo-gallery">
+    {% for photo in photos %}
+    <li class="photo-item">
+        <img alt={{ photo.title }} title={{ photo.descript }}  src="{{ photo.path }}">
+    </li>
+    {% endfor %}
+</ul>
+
+{% if page.page_count > 1 %}
+<nav id="myPagination">
+  <ul class="pagination">
+    {% for x in range(page.page_count) %}
+        {% if (x+1) == page.page_index %}
+            <li class="active">
+        {% else %}
+            <li>
+        {% endif %}
+                <a href="photos?page={{x+1}}">{{x+1}}</a>
+            </li>
+    {% endfor %}
+  </ul>
+</nav>
+{% endif %}
+{% endblock %}
+
+
+{% block funcript %}
+<!-- modal -->
+<div class="modal fade" id="bsPhotoGalleryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/static/js/jQuery.bsPhotoGallery.js"></script>
+<link rel="stylesheet" href="/static/css/jQuery.bsPhotoGallery.css">
+<script type="text/javascript">
+    navactive = document.getElementById("photos")
+    navactive.className = "active"
+    $('ul.photo-gallery').bsPhotoGallery({
+        "classes" : "col-lg-3 col-md-3 col-sm-4 col-xs-6 col-xxs-12",
+        "hasModal" : true,
+        'fullHeight': true
+      });
+
+    var imgBlock = $(".imgWrapper")
+    imgBlock.css("height", imgBlock.width()*0.6)
+    $(window).on('resize', function() {
+        var imgBlock = $(".imgWrapper")
+        imgBlock.css("height", imgBlock.width()*0.6)
+    });
+</script>
+{% endblock %}

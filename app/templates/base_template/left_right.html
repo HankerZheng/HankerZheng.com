@@ -1,0 +1,45 @@
+{% extends '/base_template/base.html' %}
+
+
+{% block metakeywords %}
+{% endblock %}
+
+
+{% block title %}
+    {{super()}}
+{% endblock %}
+
+
+{% block beforehead %}
+{% endblock %}
+
+
+{% block content %}
+    <div class="row content">
+        <div class="col-sm-9 left-block">
+                <!-- here is the place for blogs -->
+                {% block left_content %}
+                {% endblock %}
+        </div>
+        <div class="col-sm-3 right-block">
+            <!-- here is the place for left side navigation -->
+            <!-- including tags and follow me -->
+            <p>test</p>
+            <p>test</p> 
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+            <p>test</p>
+
+            {% block right_content %}
+            {% endblock %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block funcript %}
+{% endblock %}
