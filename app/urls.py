@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os, re, time, base64, hashlib, logging, json
+import markdown
 
 from transwarp.web import get, post, ctx, view, interceptor, seeother, notfound
 
@@ -112,6 +113,7 @@ def blog_view(blog_id):
     if not blog:
         raise notfound()
     tags = Tag.find_all()
+    blog.html_content = markdown.markdown(blog.content)
     return dict(blog=blog, tags=tags)
 
 # =============================================
@@ -305,7 +307,7 @@ def api_blog_create():
     check_admin()
     i = ctx.request.input(blogTitle="", blogTags="", blogSummary="", blogContent="")
     title = i.blogTitle.strip()
-    tags = [tag.strip() for tag in i.blogTags.split(';')]
+    tags = [tag.strip() for tag in i.blogTags.replace(',',';').split(';')]
     if not tags[-1]:
         tags.pop(-1)
     summary = i.blogSummary.strip()
@@ -324,7 +326,7 @@ def api_blog_edit(blog_id):
     check_admin()
     i = ctx.request.input(blogTitle="", blogTags="", blogSummary="", blogContent="")
     title = i.blogTitle.strip()
-    new_tags = [tag.strip() for tag in i.blogTags.split(';')]
+    new_tags = [tag.strip() for tag in i.blogTags.replace(',',';').split(';')]
     if not new_tags[-1]:
         new_tags.pop(-1)
     summary = i.blogSummary.strip()

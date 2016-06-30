@@ -15,9 +15,15 @@
 
 4. Management basically finished. Deletion still needs to be added.
 
+5. What has been done today:
+    - Apply Vue.js to implement the blog/photo edit page
+    - API post/get for blog/photo edit page
+    - Apply front-end-side SHOWDOWN.JS to markdown the text for blog
+    - add animation to `back-to-top` button
+
 5. Things to be done:
     - Add deletion function for blogs and photos
-    - markdown still needs to be added!(markdown2 is not good enough)
+    - CSS for blog display
 
 
 2016-06-29

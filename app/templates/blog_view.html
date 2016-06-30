@@ -17,8 +17,8 @@
 {% block content %}
 	<div class="blog-post">
 		<h2 class="blog-post-title">{{ blog.title }}</h2>
-		<p class="blog-post-meta">{{ blog.created_at|datetime }}</p>
-		{{ blog.content }}
+		<h4 class="blog-post-meta">{{ blog.created_at|datetime }}</h4>
+		<div>{{ blog.content | safe }}</div>
 		</div>
 {% endblock %}
 
@@ -27,5 +27,10 @@
 <script type="text/javascript">
     navactive = document.getElementById("blogs")
     navactive.className = "active"
+    $(function(){
+        var txt = $(".blog-post div").text();
+        var converter = new showdown.Converter()
+        $(".blog-post div").html(converter.makeHtml(txt));
+    });
 </script>
 {% endblock %}

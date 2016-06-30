@@ -34,7 +34,6 @@
 }
 .imgWrapper {
   overflow: hidden;
-  padding: 1px;
 }
 .imgWrapper img{
   min-height:100%;

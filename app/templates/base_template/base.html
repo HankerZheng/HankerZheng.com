@@ -17,6 +17,7 @@
     <!-- javascript -->
     <script src="/static/js/jquery-1.11.3.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/showdown.min.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -78,15 +79,15 @@
     <!-- all the content after navbar comes in one container-fluid block -->
     <div class="container-fluid">
       <!-- Back-to-Top icon -->
-      <div class="back-to-top"><a href="#">
+      <div class="back-to-top">
         <span class="fa-stack fa-2x">
           <i class="fa fa-square-o fa-stack-2x"></i>
           <i class="fa fa-reply-all fa-rotate-90 fa-stack-1x"></i>
         </span>
-      </a></div>
+      </div>
       <!-- all block content comes in a container -->
 
-      <div id="content-container" style="height:1300px; background-color: transparent" class="container">
+      <div id="content-container" style="background-color: transparent" class="container">
       {% block content %}
       {% endblock %}      
       </div>
@@ -113,6 +114,13 @@
       </footer>
     </div>
 
+<script>
+$(".back-to-top").click(function(){
+  if (window.pageYOffset<298){backToPos="0px";}
+  else {backToPos="300px";}
+  $("body").animate({"scrollTop": backToPos}, 300);
+});
+</script>
     {% block funcript %}<!-- put script here -->{% endblock %}
   </body>
 </html>

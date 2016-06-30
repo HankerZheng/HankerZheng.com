@@ -1,7 +1,7 @@
-a {
+.blog-title a {
   color: inherit;
 }
-a:hover{
+.blog-title a:hover{
   color: inherit;
 }
 table {
@@ -45,11 +45,13 @@ table {
   position: fixed;
   bottom: 25px;
   right: 20px;
+  overflow-y: hidden;
 }
 .back-to-top:visited{
   color:inherit;
 }
 .back-to-top:hover{
+  cursor: pointer;
   text-shadow: 0px 0px 4px #C0C0C0;
 }
 .back-to-top:active{
