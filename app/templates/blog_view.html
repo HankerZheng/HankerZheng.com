@@ -18,7 +18,7 @@
 	<div class="blog-post">
 		<h2 class="blog-post-title">{{ blog.title }}</h2>
 		<p class="blog-post-meta">{{ blog.created_at|datetime }}</p>
-		{{ blog.content|safe }}
+		{{ blog.content }}
 		</div>
 {% endblock %}
 

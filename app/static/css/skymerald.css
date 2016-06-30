@@ -4,11 +4,12 @@ a {
 a:hover{
   color: inherit;
 }
-
+table {
+    table-layout: fixed;
+    word-wrap: break-word;
+}
 #content-container{
-  padding: 30px 10px 30px 10px;
-  border-left: 1px solid #E0E0E0;
-  border-right: 1px solid #E0E0E0;
+  padding: 30px 0px 30px 0px;
 }
 /* blogs-concerning */
 .left-block {

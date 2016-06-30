@@ -1,0 +1,56 @@
+{% extends '/manage/index.html' %}
+
+{% block metakeywords %}
+{% endblock %}
+
+
+{% block title %}
+    Blog List for Edit - {{super()}}
+{% endblock %}
+
+
+{% block beforehead %}
+<style>
+table tbody tr:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+</style>
+{% endblock %}
+
+
+{% block content %}
+<table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th class="col-xs-3">Title</th>
+        <th class="col-xs-2">Tags</th>
+        <th class="col-xs-5">Summary</th>
+        <th class="col-xs-2">Create time</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for blog in blogs %}
+    <tr href="/manage/blog_edit/{{blog.id}}">
+        <td>{{blog.title}}</td>
+        <td>{% for tag in blog.load_tags %}{{tag}};{% endfor %}</td>
+        <td>{{blog.summary}}</td>
+        <td>{{blog.created_at | datetime}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{{super()}}
+{% endblock %}
+
+
+{% block funcript %}
+<script type="text/javascript">
+$(function(){
+    $(".table tbody tr").click(function(){
+        window.location.href = $(this).attr("href")
+    });
+});
+</script>
+{% endblock %}

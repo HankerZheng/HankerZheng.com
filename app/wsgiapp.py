@@ -29,7 +29,7 @@ def datetimetillnow_filter(t):
 
 def datetime_filter(t):
 	lt = time.localtime(t)
-	return u'%s' % time.strftime("%B %d, %Y ",lt)
+	return u'%s' % time.strftime("%b %d, %Y ",lt)
 
 # init db:
 db.create_engine(**configs.db)

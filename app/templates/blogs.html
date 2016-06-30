@@ -16,13 +16,13 @@
 
 {% block left_content %}
     {% for blog in blogs %}
-        <h2 class="blog-title"><a href="/blog/{{ blog.cr_year }}/{{ blog.cr_month }}/{{ blog.id }}">
+        <h2 class="blog-title"><a href="/blog/{{ blog.id }}">
             {{ blog.title }}
         </a></h2>
         <h5><span class="glyphicon glyphicon-time"></span> Post at {{ blog.created_at|datetime }}</h5>
         <h5><span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span></h5><br>
         <p class="blog-summary">{{ blog.summary }}</p>
-        <p><a href="/blog/{{ blog.cr_year }}/{{ blog.cr_month }}/{{ blog.id }}">Read more...<i class="uk-icon-angle-double-right"></i></a></p>
+        <p><a href="/blog/{{ blog.id }}">Read more...</a></p>
        <hr />
     {% endfor %}
 

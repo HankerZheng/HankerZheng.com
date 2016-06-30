@@ -1,0 +1,59 @@
+{% extends '/manage/index.html' %}
+
+{% block metakeywords %}
+{% endblock %}
+
+
+{% block title %}
+    Blog List for Edit - {{super()}}
+{% endblock %}
+
+
+{% block beforehead %}
+<style>
+table tbody tr:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+</style>
+{% endblock %}
+
+
+{% block content %}
+<table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th class="col-xs-2">Title</th>
+        <th class="col-xs-3">Description</th>
+        <th class="col-xs-3">Path</th>
+        <th class="col-xs-2">Location</th>
+        <th class="col-xs-2">Create Time</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for photo in photos %}
+    <tr href="/manage/photo_edit/{{photo.id}}">
+        <td>{{photo.title}} <img class="img-thumbnail" width="80px" src="{{photo.path}}"></td>
+        <td>{{photo.descript}}</td>
+        <td>{{photo.path}}</td>
+        <td>{{photo.loc_name}}</td>
+        <td>{{photo.created_at | datetime}}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+{{super()}}
+{% endblock %}
+
+
+{% block funcript %}
+<script type="text/javascript">
+$(function(){
+    $(".table tbody tr").click(function(){
+        window.location.href = $(this).attr("href")
+    });
+});
+</script>
+{% endblock %}

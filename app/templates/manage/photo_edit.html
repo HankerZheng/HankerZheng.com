@@ -1,0 +1,88 @@
+{% extends '/manage/index.html' %}
+
+{% block metakeywords %}
+{% endblock %}
+
+
+{% block title %}
+    Photo Edit - {{super()}}
+{% endblock %}
+
+
+{% block beforehead %}
+<script src="/static/js/vue.min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var post_url = "";
+        var pre_length = "/manage/photo_edit/".length
+        var vm = new Vue({
+            el: '#photoEditForm',
+            data: {
+                photoTitle: '',
+                photoDescript: '',
+                photoPath: '/static/photos/..',
+                photoLocation: ''
+            },
+            methods: {
+                postPhoto: function (event) {
+                    event.preventDefault();
+                    $.post(post_url, this.$data, function(res,status,xhr){
+                        alert("Submit " + status + "!!");
+                        window.location.pathname = "/manage/photo_edit";
+                    });
+                }
+            }
+        });
+        if(window.location.pathname == "/manage/photo_create"){
+            post_url = '/manage/api/photo_create';
+        }
+        else{
+            this_id = window.location.pathname.substring(pre_length);
+            post_url = '/manage/api/photo_edit/' + this_id;
+            $.get('/manage/api/photo_get/'+this_id, function(data, status){
+                if(status=='success'){
+                    vm.photoTitle = data.title;
+                    vm.photoDescript = data.descript;
+                    vm.photoPath = data.path;
+                    vm.photoLocation = data.loc_name;
+                }else{
+                    alert('API_GET ERROR!')
+                    window.location.pathname = "/manage/photo_edit";
+                }
+
+            });
+        }
+
+
+    });
+
+</script>
+{% endblock %}
+
+
+{% block content %}
+<form id="photoEditForm" role="form" v-on="submit: submit">
+  <div class="form-group">
+    <label class="control-label sr-only" for="photoTitle">Photo Title:</label>
+    <input type="text" class="form-control" v-model="photoTitle" id="photoTitle" placeholder="Photo Title here...">
+  </div>
+  <div class="form-group">
+    <label class="control-label sr-only" for="photoDescript">Photo Tags:</label>
+    <input type="text" class="form-control" v-model="photoDescript" id="photoDescript" placeholder="Photo Descript here...">
+  </div>
+  <div class="form-group">
+    <label class="control-label sr-only" for="photoPath">Summary:</label>
+    <input type="text" class="form-control" v-model="photoPath" id="photoPath" placeholder="Photo Path here..."></textarea>
+  </div>
+  <div class="form-group">
+    <label class="control-label sr-only" for="photoLocation">Content:</label>
+    <input type="text" class="form-control" v-model="photoLocation" id="photoLocation" placeholder="Photo Location here..."></textarea>
+  </div>
+  <button v-on:click="postPhoto" class="btn btn-default">Submit</button>
+</form>
+{{super()}}
+{% endblock %}
+
+
+{% block funcript %}
+{% endblock %}

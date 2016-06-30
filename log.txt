@@ -1,3 +1,25 @@
+2016-06-30
+=================
+1. After briefly reading the guidance of Vue.js, some structure of this website need to be changed:
+    - The main idea of using Vue.js is to seperate front-end and back-end code. That is, back-end(by it, here means Python code in the project) don't need to worry what dict() should return, because all the info would send to front-end by AJAX
+    - To make the website crawlable, we just use AJAX to the manage edit page.]
+    - Since blog/photo edit page is the same page as create page, the javascript should tell the difference between the two from the URL.
+
+2. Tag issues:
+    - in `javascript`, `JSON.parse()` can't parse `\"` as `"`. The correct way to make it parse `"` is to make it `\\\"`
+    - Solved by `blog.tags = json.loads(blog.tags)` before return blog in `api_blog_get()`
+
+3. Photo issues:
+    - Can't make photo title as the primary key for photos table, because we may want to change the photo title!
+    - Add photo id colomn as blog.
+
+4. Management basically finished. Deletion still needs to be added.
+
+5. Things to be done:
+    - Add deletion function for blogs and photos
+    - markdown still needs to be added!(markdown2 is not good enough)
+
+
 2016-06-29
 =================
 1. Photo gallery optimization:
@@ -5,7 +27,31 @@
     - 'pText' get from the `[title]` of the `<img>`, get `header` from the `[alt]` of the `<img>`;
     - pagination added; (also added for `/blogs` but still need to test)
 
-2. Blog creatation page:
+2. Blog creatate/edit page:
+    - for blog create page, information listed beblow need to be submit to the server:
+        - `title`
+        - `tags`
+        - `summary`
+        - `content`
+    - for blog edit page, information listed below need to be submit to the server:
+        - `id`: this may not be showed in the the page
+        - `title`
+        - `tags`
+        - `summary`
+        - `content`
+
+3. blog creatate/edit page:
+    - for blog create page, information listed beblow need to be submit to the server:
+        - `title`
+        - `tags`
+        - `summary`
+        - `content`
+    - for blog edit page, information listed below need to be submit to the server:
+        - `id`: this may not be showed in the the page
+        - `title`
+        - `tags`
+        - `summary`
+        - `content`
 
 
 2016-06-28
