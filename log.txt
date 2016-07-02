@@ -1,3 +1,19 @@
+2016-07-02
+=================
+1. What has been done today:
+    - Decide the specail color for this blog -- `#e68019` orange
+    - Decide the left-right block and their content! Still put blog in the left block and make right block invisible by `.sm-hidden`
+    - Basic style of blog title and blog meta infomation
+    - Change the colomn type of `blogs.summary` to `mediumtext`
+    - Adjust the length of `blog.title`(from 50 to 150), `blog.tags`(from 100 to 150), `photo.title`(50 to 150), `photo.loc_name`(from 50 to 150)
+    - Solve the problem that the tags of one blog would disappear in the edit mode. This problem is cause by that `data.tags` got in the `jQuery.get()` is a list rather than a string(this is also the reason why `,` would be the seperator here).
+    - Decide the style for `blog.content`
+
+2. Things to be done:
+    - CODE highlight in the content
+    - Home page, About page, Tags page
+    - add thumbnail for every photo in the gallery
+
 2016-06-30
 =================
 1. After briefly reading the guidance of Vue.js, some structure of this website need to be changed:
@@ -24,6 +40,8 @@
 5. Things to be done:
     - Add deletion function for blogs and photos
     - CSS for blog display
+    - left and right block for blig list and blog view
+    - implement `READ MORE...` button without `blog.summary`
 
 
 2016-06-29

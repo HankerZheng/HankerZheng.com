@@ -18,7 +18,7 @@
 <ul class="photo-gallery">
     {% for photo in photos %}
     <li class="photo-item">
-        <img alt={{ photo.title }} title={{ photo.descript }}  src="{{ photo.path }}">
+        <img alt='{{ photo.title }}' myTitle='{{ photo.descript }}'  src='{{ photo.path }}'>
     </li>
     {% endfor %}
 </ul>
@@ -26,6 +26,9 @@
 {% if page.page_count > 1 %}
 <nav id="myPagination">
   <ul class="pagination">
+    <li class="{{'disabled' if page.page_index==1 else ''}}">
+        <a href="?page={{page.page_index - 1}}">&laquo;
+    </a></li>
     {% for x in range(page.page_count) %}
         {% if (x+1) == page.page_index %}
             <li class="active">
@@ -34,7 +37,10 @@
         {% endif %}
                 <a href="photos?page={{x+1}}">{{x+1}}</a>
             </li>
-    {% endfor %}
+    {% endfor %}    
+    <li class="{{'disabled' if page.page_index==page.page_count else ''}}">
+        <a href="?page={{page.page_index + 1}}">&raquo;
+    </a></li>
   </ul>
 </nav>
 {% endif %}
@@ -62,7 +68,6 @@
         "hasModal" : true,
         'fullHeight': true
       });
-
     var imgBlock = $(".imgWrapper")
     imgBlock.css("height", imgBlock.width()*0.6)
     $(window).on('resize', function() {

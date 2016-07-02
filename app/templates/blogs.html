@@ -16,19 +16,26 @@
 
 {% block left_content %}
     {% for blog in blogs %}
-        <h2 class="blog-title"><a href="/blog/{{ blog.id }}">
+        <h1 class="blog-title"><a href="/blog/{{ blog.id }}">
             {{ blog.title }}
-        </a></h2>
-        <h5><span class="glyphicon glyphicon-time"></span> Post at {{ blog.created_at|datetime }}</h5>
-        <h5><span class="label label-danger">Food</span> <span class="label label-primary">Ipsum</span></h5><br>
-        <p class="blog-summary">{{ blog.summary }}</p>
-        <p><a href="/blog/{{ blog.id }}">Read more...</a></p>
-       <hr />
+        </a></h1>
+        <div class="blog-meta">
+            <i class="fa fa-clock-o" aria-hidden="true"></i> {{blog.created_at | datetime}}
+            &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-tag" aria-hidden="true"></i> 
+            <span class="blog-tags">{{blog.tags}}</span>
+        </div>
+        <div class="meta-seperator"></div>
+        <article class="blog-summary blog-content">{{ blog.summary }}</article>
+        <p><a class="readmore-btn" href="/blog/{{ blog.id }}">Read more...</a></p>
+       <div class="blog-seperator"></div>
     {% endfor %}
 
-    {% if page.page_count > 1 %}
+    {% if page and page.page_count > 1 %}
     <nav id="myPagination">
       <ul class="pagination">
+        <li class="{{'disabled' if page.page_index==1 else ''}}">
+            <a href="?page={{page.page_index - 1}}">&laquo;
+        </a></li>
         {% for x in range(page.page_count) %}
             {% if (x+1) == page.page_index %}
                 <li class="active">
@@ -37,10 +44,15 @@
             {% endif %}
                     <a href="?page={{x+1}}">{{x+1}}</a>
                 </li>
-        {% endfor %}
+        {% endfor %}        
+        <li class="{{'disabled' if page.page_index==page.page_count else ''}}">
+            <a href="?page={{page.page_index + 1}}">&raquo;
+        </a></li>
       </ul>
     </nav>
     {% endif %}
+
+
 {% endblock %}
 
 {% block right_content %}
@@ -54,6 +66,22 @@
     $(document).ready(function(){
         $("#myPagination li a").attr("href", function(i, origValue){
             return window.location.pathname+origValue;
+        });
+        var converter = new showdown.Converter({'literalMidWordUnderscores': true})
+        $('.blog-summary').each(function(){
+            var txt = $(this).text();
+            $(this).html(converter.makeHtml(txt));
+        });
+        $('.blog-tags').each(function(){
+            var info = $(this).text();
+            info = JSON.parse(info);
+            thisHtml = "";
+            for (i=0; i<info.length; i++){
+                thisHtml += '<a href="/tags/'
+                thisHtml += info[i] + '">#'
+                thisHtml += info[i] + '</a>&nbsp;&nbsp;';
+            }
+            $(this).html(thisHtml);
         });
     });
 </script>

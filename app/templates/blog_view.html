@@ -14,12 +14,22 @@
 {% endblock %}
 
 
-{% block content %}
-	<div class="blog-post">
-		<h2 class="blog-post-title">{{ blog.title }}</h2>
-		<h4 class="blog-post-meta">{{ blog.created_at|datetime }}</h4>
-		<div>{{ blog.content | safe }}</div>
-		</div>
+{% block left_content %}
+<div class="blog-post">
+    <h1 class="blog-title"><a href="/blog/{{ blog.id }}">
+        {{ blog.title }}
+    </a></h1>
+    <div class="blog-meta">
+        <i class="fa fa-clock-o" aria-hidden="true"></i> {{blog.created_at | datetime}}
+        &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-tag" aria-hidden="true"></i> 
+        <span class="blog-tags">{{blog.tags}}</span>
+    </div>
+    <div class="meta-seperator"></div>
+        <article class="blog-content">{{ blog.content }}</article>
+    <div class="blog-seperator"></div>
+
+
+</div>
 {% endblock %}
 
 
@@ -28,9 +38,20 @@
     navactive = document.getElementById("blogs")
     navactive.className = "active"
     $(function(){
-        var txt = $(".blog-post div").text();
-        var converter = new showdown.Converter()
-        $(".blog-post div").html(converter.makeHtml(txt));
+        var txt = $(".blog-content").text();
+        var converter = new showdown.Converter({'literalMidWordUnderscores': true})
+        $(".blog-content").html(converter.makeHtml(txt));
+        $('.blog-tags').each(function(){
+            var info = $(this).text();
+            info = JSON.parse(info);
+            thisHtml = "";
+            for (i=0; i<info.length; i++){
+                thisHtml += '<a href="/tags/'
+                thisHtml += info[i] + '">#'
+                thisHtml += info[i] + '</a>&nbsp;&nbsp;';
+            }
+            $(this).html(thisHtml);
+        });
     });
 </script>
 {% endblock %}

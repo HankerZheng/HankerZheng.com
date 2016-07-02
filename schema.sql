@@ -20,9 +20,9 @@ create table users (
 
 create table blogs (
     `id` varchar(50) not null,
-    `title` varchar(50) not null,
-    `tags` varchar(100) not null,
-    `summary` varchar(200) not null,
+    `title` varchar(150) not null,
+    `tags` varchar(150) not null,
+    `summary` mediumtext not null,
     `content` mediumtext not null,
     `cr_year` smallint not null,
     `cr_month` tinyint not null,
@@ -33,10 +33,10 @@ create table blogs (
 
 create table photos (
     `id` varchar(50) not null,
-    `title` varchar(50) not null,
+    `title` varchar(150) not null,
     `descript` varchar(200) not null,
     `path` varchar(100) not null,
-    `loc_name` varchar(50) not null,
+    `loc_name` varchar(150) not null,
     `loc_lat` float(10,6) not null,
     `loc_lng` float(10,6) not null,
     `created_at` real not null,

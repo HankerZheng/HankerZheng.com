@@ -28,9 +28,9 @@ class Blog(Model):
 	__table__ = 'blogs'
 
 	id = StringField(primary_key=True, default=next_id, ddl='varchar(50)')
-	title = StringField(ddl='varchar(50)')
-	tags = StringField(ddl='varchar(100)')
-	summary = StringField(ddl='varchar(200)')	
+	title = StringField(ddl='varchar(150)')
+	tags = StringField(ddl='varchar(150)')
+	summary = TextField(ddl='mediumtext')	
 	content = TextField(ddl='mediumtext')
 	cr_year = IntegerField(ddl='smallint')
 	cr_month = IntegerField(ddl='tinyint')
@@ -40,10 +40,10 @@ class Photo(Model):
 	__table__ = 'photos'
 
 	id = StringField(primary_key=True, default=next_id, ddl='varchar(50)')
-	title = StringField(ddl='varchar(50)')
+	title = StringField(ddl='varchar(150)')
 	descript = StringField(ddl='varchar(200)')
 	path = StringField(ddl='varchar(100)')
-	loc_name = StringField(ddl='varchar(50)')
+	loc_name = StringField(ddl='varchar(150)')
 	loc_lat = FloatField(ddl='float(10,6)')
 	loc_lng = FloatField(ddl='float(10,6)')
 	created_at = FloatField(updatable=False, default=time.time)

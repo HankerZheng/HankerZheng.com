@@ -98,7 +98,7 @@ def index():
 @view('blogs.html')
 @get('/blogs')
 def blogs_all():
-    page = _get_page_info(item_type=Blog, page_size=10)
+    page = _get_page_info(item_type=Blog, page_size=7)
     blogs = Blog.find_by('order by created_at DESC limit ?,?', page.offset, page.limit)
     tags = Tag.find_all()
     return dict(blogs=blogs, page=page, tags=tags)
@@ -115,6 +115,29 @@ def blog_view(blog_id):
     tags = Tag.find_all()
     blog.html_content = markdown.markdown(blog.content)
     return dict(blog=blog, tags=tags)
+
+
+
+# =============================================
+# About tags
+# =============================================
+@view('blogs.html')
+@get('/tags/:tag_name')
+def blogs_in_tags(tag_name):
+    if not _id_check(tag_name):
+        raise notfound()
+
+    tags = Tag.find_all()
+    tag = Tag.get(tag_name)
+    blogs = []
+    for blog_id in json.loads(tag.blogs):
+        blog = Blog.get(blog_id)
+        if blog is None:
+            raise notfound()
+        blogs.append(blog)
+    blogs.sort(lambda a,b: -cmp(a.created_at,b.created_at))
+    return dict(blogs=blogs, page=None, tags=tags)
+
 
 # =============================================
 # About photos
@@ -196,7 +219,7 @@ def blog_create():
 @view('/manage/blog_edit_list.html')
 @get('/manage/blog_edit')
 def blog_edit_list():
-    blogs = Blog.find_all()
+    blogs = Blog.find_by('order by created_at DESC')
     for blog in blogs:
         blog.load_tags = json.loads(blog.tags)
     return dict(blogs=blogs)
@@ -218,7 +241,7 @@ def photo_create():
 @view('/manage/photo_edit_list.html')
 @get('/manage/photo_edit')
 def photo_edit_list():
-    photos = Photo.find_all()
+    photos = Photo.find_by('order by created_at DESC')
     return dict(photos=photos)
 # photo edit page
 @view('/manage/photo_edit.html')
@@ -307,7 +330,7 @@ def api_blog_create():
     check_admin()
     i = ctx.request.input(blogTitle="", blogTags="", blogSummary="", blogContent="")
     title = i.blogTitle.strip()
-    tags = [tag.strip() for tag in i.blogTags.replace(',',';').split(';')]
+    tags = [tag.strip() for tag in i.blogTags.split(';')]
     if not tags[-1]:
         tags.pop(-1)
     summary = i.blogSummary.strip()
@@ -326,7 +349,7 @@ def api_blog_edit(blog_id):
     check_admin()
     i = ctx.request.input(blogTitle="", blogTags="", blogSummary="", blogContent="")
     title = i.blogTitle.strip()
-    new_tags = [tag.strip() for tag in i.blogTags.replace(',',';').split(';')]
+    new_tags = [tag.strip() for tag in i.blogTags.split(';')]
     if not new_tags[-1]:
         new_tags.pop(-1)
     summary = i.blogSummary.strip()
@@ -342,10 +365,6 @@ def api_blog_edit(blog_id):
     blog.summary = summary
     blog.content =content
     blog.update()
-
-    if old_tags == new_tags:
-        return blog
-
     # tags has been change
     for new_tag in new_tags:
         if new_tag in old_tags:

@@ -1,0 +1,51 @@
+/*all blog infomation is '.blog-post' */
+/*title is 'h1.blog-title' */
+/*tags and created_at is 'div.blog-meta'*/
+/*content is 'article.blog-content'*/
+body{
+  font-size: 180%;
+  font-family:Arial,'Times New Roman',"Hiragino Sans GB",SimHei; 
+}
+
+.blog-title{
+  font-family: Georgia, SimSun;
+  font-weight: bold;
+  text-transform: capitalize;
+  padding-bottom: 15px;
+}.blog-meta{
+    font-family: Georgia;
+    font-size: 1em;
+}.blog-content h1{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-decoration:underline;
+    font-size: 1.475em;
+}.blog-content h2{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-decoration:underline;
+    font-size: 1.325em;
+}.blog-content h3{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-decoration:underline;
+    font-size: 1.125em;
+}.blog-content h4{
+    text-decoration:underline;
+    font-size: 1em;
+}.blog-content h5{
+    text-decoration:underline;
+    font-size: 1em;
+}.blog-content h6{
+    text-decoration:underline;
+    font-size: 1em;
+}.blog-content p{
+    font-family: 'Microsoft YaHei';
+    line-height: 170%;
+    font-size: 1em;
+    margin-bottom: 1.25rem;
+}.blog-content blockquote{
+    font-style: oblique;
+}.blog-content pre{
+    font-size: 1.05em;
+}

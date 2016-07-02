@@ -15,27 +15,17 @@
 
 
 {% block content %}
-    <div class="row content">
-        <div class="col-sm-9 left-block">
-                <!-- here is the place for blogs -->
-                {% block left_content %}
-                {% endblock %}
-        </div>
-        <div class="col-sm-3 right-block">
-            <!-- here is the place for left side navigation -->
-            <!-- including tags and follow me -->
-            <p>test</p>
-            <p>test</p> 
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
-            <p>test</p>
-
-            {% block right_content %}
-            {% endblock %}
-        </div>
+<div class="row">
+    <div id="left-block" class="col-md-9">
+        <!-- here is the place for left side navigation -->
+        <!-- including tags and follow me -->
+        {% block left_content %}
+        {% endblock %}
+    </div>
+    <div id="right-block" class="col-md-3 hidden-sm">
+        <!-- here is the place for blogs -->
+        {% block right_content %}
+        {% endblock %}
     </div>
 </div>
 {% endblock %}

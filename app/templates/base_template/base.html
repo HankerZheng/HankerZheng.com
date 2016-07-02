@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/static/css/font-awesome.min.css">
     <!-- customized CSS -->
     <link rel="stylesheet" href="/static/css/skymerald.css">
+    <link rel="stylesheet" href="/static/css/blogstyle.css">
     <!-- javascript -->
     <script src="/static/js/jquery-1.11.3.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
@@ -31,11 +32,11 @@
     <!-- JUMBOTRON -->
     <div class="jumbotron">
       <div class="container">
-        <h1 class="text-center">Han Zheng</h1>
-        <p class="text-center"><cite>
+        <h1 id="jumbotronName" class="text-center">Han Zheng</h1>
+        <p id="jumbotronSay" class="text-center"><cite>
           A programmer who can't play the guitar well won't <br>turn into an excellent electrical engineer.
         </cite></p>
-        <p style="text-align:right;margin-right:50px"><small>by <strong>Some Well-Known</strong></small></p>
+        <p id="jumbotronSayby" style="text-align:right;margin-right:50px"><small>by <strong>Some Well-Known</strong></small></p>
       </div>
     </div>
 
@@ -80,16 +81,16 @@
     <div class="container-fluid">
       <!-- Back-to-Top icon -->
       <div class="back-to-top">
-        <span class="fa-stack fa-2x">
+        <span class="fa-stack fa-1x">
           <i class="fa fa-square-o fa-stack-2x"></i>
           <i class="fa fa-reply-all fa-rotate-90 fa-stack-1x"></i>
         </span>
       </div>
       <!-- all block content comes in a container -->
 
-      <div id="content-container" style="background-color: transparent" class="container">
+      <div id="content-container" class="container">
       {% block content %}
-      {% endblock %}      
+      {% endblock %}
       </div>
 
 

@@ -73,7 +73,7 @@
           var ulIndex = $(this).parent('ul').attr('data-bsp-ul-index');
           var ulId = $(this).parent('ul').attr('data-bsp-ul-id');
           var theImg = $(this).find('img');
-          var pText = theImg.attr('title');        
+          var pText = theImg.attr('myTitle');        
           var modalText = typeof pText !== 'undefined' ? pText : 'undefined';
           var alt =  typeof theImg.attr('alt') == 'string' ? theImg.attr('alt') : null;
           
@@ -125,7 +125,7 @@
                 src = largeImg;
           } 
           
-          var pText = ul.find('li[data-bsp-li-index="'+index+'"] img').attr('title');        
+          var pText = ul.find('li[data-bsp-li-index="'+index+'"] img').attr('myTitle');        
           var modalText = typeof pText !== 'undefined' ? pText : 'undefined';
           var theImg = ul.find('li[data-bsp-li-index="'+index+'"] img');
           var alt =  typeof theImg.attr('alt') == 'string' ? theImg.attr('alt') : null;
