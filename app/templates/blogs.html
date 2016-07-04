@@ -2,6 +2,7 @@
 
 
 {% block metakeywords %}
+    {{super()}}
 {% endblock %}
 
 
@@ -11,6 +12,7 @@
 
 
 {% block beforehead %}
+    {{super()}}
 {% endblock %}
 
 
@@ -52,14 +54,13 @@
     </nav>
     {% endif %}
 
-
 {% endblock %}
 
-{% block right_content %}
-{% endblock %}
+
 
 
 {% block funcript %}
+    {{super()}}
 <script type="text/javascript">
     navactive = document.getElementById("blogs");
     navactive.className = "active";

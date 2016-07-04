@@ -1,3 +1,17 @@
+2016-07-03
+=================
+1. What has been done today:
+    - right nav side bar finished. Show `Tags`, `Friendly Links`, `Follow` and Easter Eggs.
+    - apply Regular Expression search from MySQL for tag page.
+    - change the Jumbotron into a special effect which may show `A programmer who can play electrical guitar`
+    - Management method `DELETE` with confirm modal added(through `GET` method)
+    - Management page pagination added
+
+2. Things to be done:
+    - CODE Highlight in the content
+    - Home page, About page, Archives page
+    - add thumbnail for every photo in the gallery
+
 2016-07-02
 =================
 1. What has been done today:

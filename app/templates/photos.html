@@ -1,7 +1,8 @@
-{% extends '/base_template/base.html' %}
+{% extends '/base_template/left_right.html' %}
 
 
 {% block metakeywords %}
+    {{super()}}
 {% endblock %}
 
 
@@ -11,10 +12,11 @@
 
 
 {% block beforehead %}
+    {{super()}}
 {% endblock %}
 
 
-{% block content %}
+{% block left_content %}
 <ul class="photo-gallery">
     {% for photo in photos %}
     <li class="photo-item">
@@ -35,7 +37,7 @@
         {% else %}
             <li>
         {% endif %}
-                <a href="photos?page={{x+1}}">{{x+1}}</a>
+                <a href="?page={{x+1}}">{{x+1}}</a>
             </li>
     {% endfor %}    
     <li class="{{'disabled' if page.page_index==page.page_count else ''}}">
@@ -48,6 +50,7 @@
 
 
 {% block funcript %}
+    {{super()}}
 <!-- modal -->
 <div class="modal fade" id="bsPhotoGalleryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -63,11 +66,14 @@
 <script type="text/javascript">
     navactive = document.getElementById("photos")
     navactive.className = "active"
+    $("#myPagination li a").attr("href", function(i, origValue){
+        return window.location.pathname+origValue;
+    });
     $('ul.photo-gallery').bsPhotoGallery({
-        "classes" : "col-lg-3 col-md-3 col-sm-4 col-xs-6 col-xxs-12",
+        "classes" : "col-lg-4 col-md-4 col-sm-4 col-xs-6 col-xxs-6",
         "hasModal" : true,
         'fullHeight': true
-      });
+    });
     var imgBlock = $(".imgWrapper")
     imgBlock.css("height", imgBlock.width()*0.6)
     $(window).on('resize', function() {

@@ -9,7 +9,7 @@
     <meta name="author" content="Han Zheng">
     {% block metakeywords %}{% endblock %}
     <!-- Bootstrap core CSS -->
-    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <!-- Awesome Font CSS -->
     <link rel="stylesheet" href="/static/css/font-awesome.min.css">
     <!-- customized CSS -->
@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="/static/css/blogstyle.css">
     <!-- javascript -->
     <script src="/static/js/jquery-1.11.3.min.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="/static/js/showdown.min.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -34,7 +34,8 @@
       <div class="container">
         <h1 id="jumbotronName" class="text-center">Han Zheng</h1>
         <p id="jumbotronSay" class="text-center"><cite>
-          A programmer who can't play the guitar well won't <br>turn into an excellent electrical engineer.
+          A programmer who can't play the guitar well won't <br>
+          turn into an excellent electrical engineer.
         </cite></p>
         <p id="jumbotronSayby" style="text-align:right;margin-right:50px"><small>by <strong>Some Well-Known</strong></small></p>
       </div>
@@ -100,15 +101,15 @@
           <div class="row">
             <div class="col-sm-4 text-center">
               <div class="btn-group">
-                <a class="btn btn-default" href="https://www.facebook.com/HankerZheng" title="Follow me on Facebook"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a>
-                <a class="btn btn-default"  href="https://github.com/HankerZheng" title="Follow me on Github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
-                <a class="btn btn-default"  href="http://www.linkedin.com/in/hanzheng992" title="Follow me on LinkedIn"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
-                <a class="btn btn-default"  href="http://weibo.com/u/2529909465" title="Follow me on Weibo"><i class="fa fa-weibo fa-2x" aria-hidden="true"></i></a>
+                <a class="btn btn-default" target="_blank" href="https://www.facebook.com/HankerZheng" title="Follow me on Facebook"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a>
+                <a class="btn btn-default" target="_blank" href="https://github.com/HankerZheng" title="Follow me on Github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+                <a class="btn btn-default" target="_blank" href="http://www.linkedin.com/in/hanzheng992" title="Follow me on LinkedIn"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+                <a class="btn btn-default" target="_blank" href="http://weibo.com/u/2529909465" title="Follow me on Weibo"><i class="fa fa-weibo fa-2x" aria-hidden="true"></i></a>
               </div>
             </div>
             <div class="col-sm-8">
               <p class="footer-text">&copy;2016 Han Zheng</p>
-              <p class="footer-text">Photo gallery designed by <a href="https://github.com/michaelsoriano/bootstrap-photo-gallery">Michael Soriano</a></p>
+              <p class="footer-text">Photo gallery designed by <a target="_blank" href="https://github.com/michaelsoriano/bootstrap-photo-gallery">Michael Soriano</a></p>
             </div>
           </div>
         </div>
@@ -117,11 +118,12 @@
 
 <script>
 $(".back-to-top").click(function(){
-  if (window.pageYOffset<298){backToPos="0px";}
-  else {backToPos="300px";}
+  if (window.pageYOffset<299){backToPos="0px";}
+  else {backToPos="298px";}
   $("body").animate({"scrollTop": backToPos}, 300);
 });
 </script>
     {% block funcript %}<!-- put script here -->{% endblock %}
+  
   </body>
 </html>

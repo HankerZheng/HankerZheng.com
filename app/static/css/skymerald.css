@@ -6,13 +6,50 @@
   background-color:transparent; 
 }
 #right-block{
-  border-left: 1px red solid;
   background-color:transparent;
+  padding: 0;
 }
-
 /*right block*/
-#selfie{
-  width: 70%;
+.right-navbar.affix{
+  position: fixed;
+  top: 114px;
+}.right-nav-seperator{
+  width: 95%;
+  height: 0px;
+  border-top: 1px dotted #d3d3d3;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}#right-container{
+  overflow-y: auto; 
+  font-size: 90%;
+  padding-left: 30px;
+  width: 300px;
+}#right-container h3{
+  font-size: 0.94em;
+  font-weight: bold;
+  font-family: Georgia, sans-serif;
+  margin-top: 0.3em;
+  margin-bottom: 0.6em;
+}.tag-list{
+  padding: 0;
+  list-style-type: none;
+}.tag-item{
+  color: #333;
+  line-height: 180%;
+  text-transform: capitalize;
+  font-family: Georgia, sans-serif;
+}.tag-item a{
+  color: #333;
+  -webkit-transition: color 0.6s; /* Safari */
+  transition: color 0.6s;
+}.tag-item a:hover{
+  color: #e68019;
+}#scareu{
+  display: none;
+  text-align: left;
+  font-family: Georgia, sans-serif;
+}#selfie{
+  width: 80%;
 }
 /*left block*/
 .blog-title a {
@@ -88,6 +125,7 @@
 }
 /* back-to-top icon */
 .back-to-top {
+  z-index: 10;
   color: grey;
   position: fixed;
   bottom: 25px;
@@ -101,52 +139,49 @@
 }
 
 /* affix-converning */
-.affix {
+.navbar.affix {
     top: 0;
     width: 100%;
-}
-.affix + .container-fluid {
+}.affix + .container-fluid {
     padding-top: 54px;
     z-index: -1
-}
-.jumbotron {
+}.jumbotron {
   text-rendering: optimizeLegibility;
   padding-top: 35px;
   padding-bottom: 20px;
   margin: 0;
-  background-color: #E0E0E0;
+  background-color: #D0D0D0;
   height: 300px;
-}
-.jumbotron:hover #jumbotronName{
+  -webkit-transition: background-color 2.6s, color 2.6s, text-shadow 0.6s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 2.6s, color 2.6s, text-shadow 0.6s;
+}.jumbotron:hover{
+  text-shadow: 0px 0px 1px #222; 
+  color: #ddd;
+  background-color: #222;
+}.jumbotron:hover #jumbotronName{
   -ms-transform: scale(0.85, 0.85); /* IE 9 */
   -webkit-transform: scale(0.85, 0.85); /* Safari */
   transform: scale(0.85, 0.85);
-}
-.jumbotron:hover #jumbotronSay{
+}.jumbotron:hover #jumbotronSay{
   -ms-transform: scale(1.25, 1.25); /* IE 9 */
   -webkit-transform: scale(1.25, 1.25); /* Safari */
   transform: scale(1.25, 1.25);
-}
-.jumbotron:hover #jumbotronSayby{
+}.jumbotron:hover #jumbotronSayby{
   -ms-transform: scale(1.05, 1.05); /* IE 9 */
   -webkit-transform: scale(1.05, 1.05); /* Safari */
   transform: scale(1.05, 1.05);
   padding-top:0.4em;
-}
-#jumbotronName{
+}#jumbotronName{
   -webkit-transition: transform 1.6s; /* For Safari 3.1 to 6.0 */
   transition: transform 1.6s;
-}
-#jumbotronSay{
+}#jumbotronSay{
   font-size: 1.2em;
   -webkit-transition: transform 1.6s; /* For Safari 3.1 to 6.0 */
   transition: transform 1.6s;
-}
-#jumbotronSayby{
+}#jumbotronSayby{
   -webkit-transition: transform 1.6s, padding-top 1.6s; /* For Safari 3.1 to 6.0 */
   transition: transform 1.6s, padding-top 1.6s;
 }
-
 /* navigation bar */
 .navbar {
   border-radius: 0;
@@ -162,21 +197,44 @@
   padding:0 0 0 0;
   margin:0 0 40px 0;
   text-align: center;
-}
-.photo-gallery .photo-item {
+}.photo-gallery .photo-item {
   list-style:none;
   padding: 0;
   align-content: center;
   -webkit-transition: transform 0.6s; /* For Safari 3.1 to 6.0 */
   transition: transform 0.6s;
-}
-.photo-gallery .photo-item:hover {
+}.photo-gallery .photo-item:hover {
   z-index: 1;
   -ms-transform: scale(1.2, 1.2); /* IE 9 */
   -webkit-transform: scale(1.2, 1.2); /* Safari */
   transform: scale(1.2, 1.2);
 }
-
+/* archives */
+.archive-header{
+  font-size: 30px;
+  margin-left: -20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #999;
+  width: 80%;
+  margin-bottom: 30px;
+}.archive-post{
+  padding-left: 20px;
+}.archive-time{
+  color:#555;
+  font-weight: bold;
+  font-family: Georgia;
+}.archive-title{
+  display: block;
+  padding-left: 20px;
+  font-size: 1.3em;
+  color: black;
+  margin-bottom: 30px;
+}.archive-title{  
+  -webkit-transition: color 0.6s; /* Safari */
+  transition: color 0.6s;
+}.archive-title:hover{
+  color: #e68019;
+}
 /* footer */
 .footer-text {
   color: black;

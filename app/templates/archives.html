@@ -2,6 +2,7 @@
 
 
 {% block metakeywords %}
+    {{super()}}
 {% endblock %}
 
 
@@ -11,24 +12,32 @@
 
 
 {% block beforehead %}
+    {{super()}}
 {% endblock %}
 
 
 {% block content %}
-    {% for photo in photos %}
-        <div class="blog-post">
-            <img src="{{photo.path}}" style="height:500px;width:500px;">
-            <p class="blog-post-title">{{ photo.title }}</p>
-            <p>{{ photo.descript }}</p>
-            <p class="blog-post-meta">{{ photo.created_at|datetime }} at {{ photo.loc_name}}</p>
+<h3 class="archive-header">ARCHIVES</h3>
+<div class="archive-post">
+    {% for blog in blogs %}
+    <div class="row archive-item">
+        <div class="col-md-2 col-sm-3">
+            <p class="archive-time">{{blog.created_at | numdatetime}}</p>
         </div>
-    {% endfor %}
+        <div class="col-md-10 col-sm-9">
+            <a class="archive-title" href="/blog/{{blog.id}}">{{blog.title}}</a>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
 {% endblock %}
 
 
 {% block funcript %}
+    {{super()}}
 <script type="text/javascript">
-    navactive = document.getElementById("archives")
-    navactive.className = "active"
+    navactive = document.getElementById("archives");
+    navactive.className = "active";
 </script>
 {% endblock %}

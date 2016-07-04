@@ -98,7 +98,7 @@ def index():
 @view('blogs.html')
 @get('/blogs')
 def blogs_all():
-    page = _get_page_info(item_type=Blog, page_size=7)
+    page = _get_page_info(item_type=Blog, page_size=5)
     blogs = Blog.find_by('order by created_at DESC limit ?,?', page.offset, page.limit)
     tags = Tag.find_all()
     return dict(blogs=blogs, page=page, tags=tags)
@@ -128,15 +128,11 @@ def blogs_in_tags(tag_name):
         raise notfound()
 
     tags = Tag.find_all()
-    tag = Tag.get(tag_name)
-    blogs = []
-    for blog_id in json.loads(tag.blogs):
-        blog = Blog.get(blog_id)
-        if blog is None:
-            raise notfound()
-        blogs.append(blog)
-    blogs.sort(lambda a,b: -cmp(a.created_at,b.created_at))
-    return dict(blogs=blogs, page=None, tags=tags)
+    where = ''' where tags REGEXP '.+"%s".+' ''' % tag_name
+    page = _get_page_info(item_type=Blog, where=where, page_size=5)
+    blogs = Blog.find_by((where +'order by created_at DESC limit ?,?'), page.offset, page.limit)
+    tags = Tag.find_all()
+    return dict(blogs=blogs, page=page, tags=tags)
 
 
 # =============================================
@@ -145,10 +141,11 @@ def blogs_in_tags(tag_name):
 @view('photos.html')
 @get('/photos')
 def photos_all():
-    page = _get_page_info(item_type=Photo, page_size=24)
+    page = _get_page_info(item_type=Photo, page_size=12)
     photos = Photo.find_by('order by created_at DESC limit ?,?',
                             page.offset, page.limit)
-    return dict(photos=photos, page=page)
+    tags = Tag.find_all()
+    return dict(photos=photos, page=page, tags=tags)
 
 
 # =============================================
@@ -161,7 +158,7 @@ def photos_all():
 @view('archives.html')
 @get('/archives')
 def archives_all():
-    page = _get_page_info(item_type=Blog, page_size=15)
+    page = _get_page_info(item_type=Blog, page_size=10)
     blogs = Blog.find_by('order by created_at DESC limit ?,?', page.offset, page.limit)
     tags = Tag.find_all()
     return dict(blogs=blogs, page=page, tags=tags)
@@ -219,10 +216,11 @@ def blog_create():
 @view('/manage/blog_edit_list.html')
 @get('/manage/blog_edit')
 def blog_edit_list():
-    blogs = Blog.find_by('order by created_at DESC')
+    page = _get_page_info(item_type=Blog, page_size=10)
+    blogs = Blog.find_by('order by created_at DESC limit ?,?', page.offset, page.limit)
     for blog in blogs:
         blog.load_tags = json.loads(blog.tags)
-    return dict(blogs=blogs)
+    return dict(blogs=blogs, page=page)
 # blog edit page
 @view('/manage/blog_edit.html')
 @get('/manage/blog_edit/:blog_id')
@@ -241,8 +239,9 @@ def photo_create():
 @view('/manage/photo_edit_list.html')
 @get('/manage/photo_edit')
 def photo_edit_list():
-    photos = Photo.find_by('order by created_at DESC')
-    return dict(photos=photos)
+    page = _get_page_info(item_type=Photo, page_size=12)
+    photos = Photo.find_by('order by created_at DESC limit ?,?', page.offset, page.limit)
+    return dict(photos=photos, page=page)
 # photo edit page
 @view('/manage/photo_edit.html')
 @get('/manage/photo_edit/:photo_id')
@@ -296,6 +295,9 @@ def _remove_blog_from_tag(blog_id, tag_name):
     if this_tag is None:
         return
     else:
+        if this_tag.count == 1:
+            this_tag.delete()
+            return
         blog_list = json.loads(this_tag.blogs)
         blog_list.remove(blog_id)
         this_tag.blogs = json.dumps(blog_list)
@@ -347,6 +349,9 @@ def api_blog_create():
 @post('/manage/api/blog_edit/:blog_id')
 def api_blog_edit(blog_id):
     check_admin()
+    if not _id_check(blog_id):
+        raise APIResourceNotFoundError('Blog')
+
     i = ctx.request.input(blogTitle="", blogTags="", blogSummary="", blogContent="")
     title = i.blogTitle.strip()
     new_tags = [tag.strip() for tag in i.blogTags.split(';')]
@@ -402,6 +407,9 @@ def api_photo_create():
 @post('/manage/api/photo_edit/:photo_id')
 def api_photo_edit(photo_id):
     check_admin()
+    if not _id_check(photo_id):
+        raise APIResourceNotFoundError('Photo')
+
     i = ctx.request.input(photoTitle="", photoDescript="", photoPath="", photoLocation="", photoLoc_lat="0", photoLoc_lng="0")
     title = i.photoTitle.strip()
     descript = i.photoDescript.strip()
@@ -422,3 +430,30 @@ def api_photo_edit(photo_id):
     photo.loc_lng = loc_lng
     photo.update()
     return photo
+
+#--------------------------
+### Delete blog
+@get('/manage/api/blog_delete/:blog_id')
+def api_blog_delete(blog_id):
+    check_admin()
+    if not _id_check(blog_id):
+        raise APIResourceNotFoundError('Blog')
+    blog = Blog.get(blog_id)
+    if blog is None:
+        raise APIResourceNotFoundError('Blog')
+
+    for tag in json.loads(blog.tags):
+        _remove_blog_from_tag(blog_id, tag)
+    blog.delete()
+    return "delete successfully!"
+
+@get('/manage/api/photo_delete/:photo_id')
+def api_photo_delete(photo_id):
+    check_admin()
+    if not _id_check(photo_id):
+        raise APIResourceNotFoundError('Photo')
+    photo = Photo.get(photo_id)
+    if photo is None:
+        raise APIResourceNotFoundError('Photo')
+    photo.delete()
+    return "delete successfully!"

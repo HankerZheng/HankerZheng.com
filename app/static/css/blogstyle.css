@@ -3,18 +3,20 @@
 /*tags and created_at is 'div.blog-meta'*/
 /*content is 'article.blog-content'*/
 body{
-  font-size: 180%;
-  font-family:Arial,'Times New Roman',"Hiragino Sans GB",SimHei; 
+    font-size: 180%;
+    font-family:Arial,'Times New Roman',"Hiragino Sans GB",SimHei; 
 }
 
 .blog-title{
-  font-family: Georgia, SimSun;
-  font-weight: bold;
-  text-transform: capitalize;
-  padding-bottom: 15px;
+    font-size: 1.625em;
+    font-family: 'Times New Roman', SimSun;
+    font-weight: bolder;
+    padding-bottom: 15px;
 }.blog-meta{
     font-family: Georgia;
     font-size: 1em;
+}.blog-content{
+    color: #555;
 }.blog-content h1{
     padding-top: 20px;
     padding-bottom: 20px;

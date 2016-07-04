@@ -27,33 +27,97 @@ table tbody tr:hover{
 <table class="table table-hover table-bordered">
     <thead>
       <tr>
-        <th class="col-xs-3">Title</th>
-        <th class="col-xs-2">Tags</th>
-        <th class="col-xs-5">Summary</th>
         <th class="col-xs-2">Create time</th>
+        <th class="col-xs-7">Title</th>
+        <th class="col-xs-3">Tags</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
     {% for blog in blogs %}
-    <tr href="/manage/blog_edit/{{blog.id}}">
-        <td>{{blog.title}}</td>
-        <td>{% for tag in blog.load_tags %}{{tag}};{% endfor %}</td>
-        <td>{{blog.summary}}</td>
-        <td>{{blog.created_at | datetime}}</td>
+    <tr>
+        <td class="edit-item" href="/manage/blog_edit/{{blog.id}}">{{blog.created_at | datetime}}</td>
+        <td class="edit-item" href="/manage/blog_edit/{{blog.id}}">{{blog.title}}</td>
+        <td class="edit-item" href="/manage/blog_edit/{{blog.id}}">{% for tag in blog.load_tags %}{{tag}};{% endfor %}</td>
+        <td class="btn delete-item" data-toggle="modal"  data-target="#confirm-delete" data-title="{{blog.title}}" data-id="{{blog.id}}">&times;</td>
     </tr>
     {% endfor %}
     </tbody>
 </table>
 
+{% if page.page_count > 1 %}
+<nav id="myPagination">
+  <ul class="pagination">
+    <li class="{{'disabled' if page.page_index==1 else ''}}">
+        <a href="?page={{page.page_index - 1}}">&laquo;
+    </a></li>
+    {% for x in range(page.page_count) %}
+        {% if (x+1) == page.page_index %}
+            <li class="active">
+        {% else %}
+            <li>
+        {% endif %}
+                <a href="?page={{x+1}}">{{x+1}}</a>
+            </li>
+    {% endfor %}    
+    <li class="{{'disabled' if page.page_index==page.page_count else ''}}">
+        <a href="?page={{page.page_index + 1}}">&raquo;
+    </a></li>
+  </ul>
+</nav>
+{% endif %}
+<!-- modal for delete confirmation -->
+<div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Delete Confirmation</h4>
+            </div>
+            <div class="modal-body">
+                <p>You are about to delete one blog.</p>
+                <div class="deletion-info"></div>
+                <p>The procedure is irreversibe.</p>
+                <p>Do you want to preceed?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger btn-ok">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
 {{super()}}
 {% endblock %}
 
 
 {% block funcript %}
+{{super()}}
 <script type="text/javascript">
 $(function(){
-    $(".table tbody tr").click(function(){
+    $("#myPagination li a").attr("href", function(i, origValue){
+        return window.location.pathname+origValue;
+    });
+    $(".table tbody .edit-item").click(function(){
         window.location.href = $(this).attr("href")
+    });
+    $("#confirm-delete").on('show.bs.modal', function(e){
+        var deleteID = $(e.relatedTarget).attr("data-id");
+        var deleteTitle = $(e.relatedTarget).attr("data-title");
+        deleteInfo = "<p>Title:<strong> "+deleteTitle+"</strong></p>";
+        deleteInfo += "<p>ID:<strong class='delete-id'>"+deleteID+"</strong></p>";
+        $(".deletion-info").html(deleteInfo);
+    });
+    $('.btn-ok').click(function(){
+        var deleteID = $("#confirm-delete .delete-id").text();
+        $.get("/manage/api/blog_delete/"+deleteID, function(data, status){
+            if(status=='success' && data=="delete successfully!"){
+                alert("Delete successfully!!");
+                window.location.pathname="/manage/blog_edit";
+            }else{
+                alert("Deletion Failed!!");
+            }
+        });
     });
 });
 </script>

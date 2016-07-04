@@ -31,6 +31,10 @@ def datetime_filter(t):
 	lt = time.localtime(t)
 	return u'%s' % time.strftime("%b %d, %Y ",lt)
 
+def num_datetime_filter(t):
+	lt = time.localtime(t)
+	return u'%s' % time.strftime("%Y-%m-%d",lt)
+
 # init db:
 db.create_engine(**configs.db)
 
@@ -39,6 +43,7 @@ wsgi = WSGIApplication(os.path.dirname(os.path.abspath(__file__)))
 # init Jinja2 template engine
 template_engine = Jinja2TemplateEngine(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates'))
 template_engine.add_filter('datetime', datetime_filter)
+template_engine.add_filter('numdatetime', num_datetime_filter)
 template_engine.add_filter('datetimetillnow', datetime_filter)
 
 wsgi.template_engine = template_engine
