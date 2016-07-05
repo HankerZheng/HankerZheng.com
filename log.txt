@@ -1,3 +1,25 @@
+2016-07-05
+=================
+1. Shrink `jquery.bsPhotoGallery.js`
+
+2. Slightly change the blogstyle
+
+3. About page logic finished, load through AJAX get() function. URL is `/static/about.txt`
+
+4. Code highlighter added, and move showdown and highlighter to only `about.html`, `blog_view.html`, `blogs.html`
+
+
+2016-07-04
+=================
+1. View `jquery.bsPhotoGallery.js`
+    - `$.extend()` function `extend(dest,src1,src2,src3...);`
+    ```javascript
+    var result=$.extend({},{name:"Tom",age:21},{name:"Jerry",sex:"Boy"});
+    result=={name:"Jerry",age:21,sex:"Boy"};
+    ```
+    - `$(selector).each(function(index, domEle))` function help search all the elements in the DOM that match the selector and do `function()` to them
+
+
 2016-07-03
 =================
 1. What has been done today:

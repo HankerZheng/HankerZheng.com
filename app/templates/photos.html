@@ -19,9 +19,10 @@
 {% block left_content %}
 <ul class="photo-gallery">
     {% for photo in photos %}
-    <li class="photo-item">
-        <img alt='{{ photo.title }}' myTitle='{{ photo.descript }}'  src='{{ photo.path }}'>
-    </li>
+    <li class="photo-item col-lg-4 col-md-4 col-sm-4 col-xs-6 col-xxs-6" data-bsp-li-index="{{loop.index0}}">
+    <div class="imgWrapper">
+        <img class="img-responsive" alt='{{ photo.title }}' myTitle='{{ photo.descript }}'  src='{{ photo.path }}'>
+    </div></li>
     {% endfor %}
 </ul>
 
@@ -56,6 +57,12 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-body">
+                <span class="glyphicon glyphicon-remove-circle" data-dismiss="modal"></span>
+                <img class="img-responsive">
+                <div class="bsp-text-container">
+                </div>
+                <a class="bsp-controls next" data-bsp-id="generateId"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="bsp-controls previous" data-bsp-id="generateId"><span class="glyphicon glyphicon-chevron-left"></span></a>
             </div>
         </div>
     </div>
@@ -69,11 +76,7 @@
     $("#myPagination li a").attr("href", function(i, origValue){
         return window.location.pathname+origValue;
     });
-    $('ul.photo-gallery').bsPhotoGallery({
-        "classes" : "col-lg-4 col-md-4 col-sm-4 col-xs-6 col-xxs-6",
-        "hasModal" : true,
-        'fullHeight': true
-    });
+    $('ul.photo-gallery').bsPhotoGallery();
     var imgBlock = $(".imgWrapper")
     imgBlock.css("height", imgBlock.width()*0.6)
     $(window).on('resize', function() {

@@ -1,48 +1,138 @@
-{% extends '/base_template/base.html' %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Han Zheng's Blog">
+    <meta name="author" content="Han Zheng">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Awesome Font CSS -->
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <!-- customized CSS -->
+    <link rel="stylesheet" href="/static/css/skymerald.css">
+    <link rel="stylesheet" href="/static/css/blogstyle.css">
+    <!-- javascript -->
+    <script src="/static/js/jquery-1.11.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>Hanker Zheng's Home</title>
+  </head>
+
+  <body style="background-color:#FAF7FA">
+    <!-- JUMBOTRON -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1 id="jumbotronName" class="text-center">Han Zheng</h1>
+        <p id="jumbotronSay" class="text-center"><cite>
+          A electrical engineer who can't play the guitar well won't <br>
+          turn into an excellent programmer.
+        </cite></p>
+        <p id="jumbotronSayby" style="text-align:right;margin-right:50px"><small>by <strong>Some Well-Known</strong></small></p>
+      </div>
+    </div>
+
+    <!-- Navigation Bar!! -->
+    <nav class="navbar navbar-inverse" style="z-index:10" data-spy="affix" data-offset-top="297">
+      <!-- Define the container -->
+      <div class="container-fluid">
+        <!-- The header of the website -->
+        <!-- Define the responsive collapse button -->
+        <!-- Three <span> tags works as three-bar icon -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> 
+          </button>
+          <a class="navbar-brand" href="/">
+            &nbsp;<strong class="iconlogo">Hanker</strong>
+          </a>
+        </div>
+        <!-- Then the list items of the navi-bar -->
+        <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li id="blogs"><a href="/blogs?page=1">
+                <i class="fa fa-newspaper-o fa-2x" aria-hidden="true"></i> BLOG
+            </a></li>
+            <li id="photos"><a href="/photos?page=1">
+                <i class="fa fa-camera-retro fa-2x" aria-hidden="true"></i> PHOTO
+            </a></li>
+            <li id="archives"><a href="/archives?page=1">
+                <i class="fa fa-archive fa-2x" aria-hidden="true"></i> ARCHIVE
+            </a></li>
+            <li id="about"><a href="/about">
+                <i class="fa fa-user fa-2x" aria-hidden="true"></i> ABOUT.ME
+            </a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- all the content after navbar comes in one container-fluid block -->
+    <div class="container-fluid">
+      <!-- Back-to-Top icon -->
+      <div class="back-to-top" aria-hidden="true">
+        <span class="fa-stack fa-1x">
+          <i class="fa fa-square-o fa-stack-2x"></i>
+          <i class="fa fa-reply-all fa-rotate-90 fa-stack-1x"></i>
+        </span>
+      </div>
 
 
-{% block metakeywords %}
-    {{super()}}
-{% endblock %}
+
+      <!-- all block content comes in a container -->
+      <!-- Here is the main content for the HOME page -->
+      <div class="container-fluid">
+      </div>
 
 
-{% block title %}
-    {{super()}} Home
-{% endblock %}
 
+      <!-- footer -->
+      <footer class="panel panel-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4 text-center">
+              <div class="btn-group">
+                <a class="btn btn-default" target="_blank" href="https://www.facebook.com/HankerZheng" title="Follow me on Facebook"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a>
+                <a class="btn btn-default" target="_blank" href="https://github.com/HankerZheng" title="Follow me on Github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+                <a class="btn btn-default" target="_blank" href="http://www.linkedin.com/in/hanzheng992" title="Follow me on LinkedIn"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+                <a class="btn btn-default" target="_blank" href="http://weibo.com/u/2529909465" title="Follow me on Weibo"><i class="fa fa-weibo fa-2x" aria-hidden="true"></i></a>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <p class="footer-text">Powered by <a target="_blank" href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001397616003925a3d157284cd24bc0952d6c4a7c9d8c55000">Awesome Python Webapp</a>
+              &nbsp;&nbsp; &copy; 2016 Han Zheng</p>
+              <p class="footer-text">Photo gallery designed by <a target="_blank" href="https://github.com/michaelsoriano/bootstrap-photo-gallery">Michael Soriano</a></p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
 
-{% block beforehead %}
-    {{super()}}
-{% endblock %}
-
-
-{% block content %}
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-<p>some content here</p>
-{% endblock %}
-
-
-{% block funcript %}
-    {{super()}}
-{% endblock %}
+<script>
+$(".back-to-top").click(function(){
+  if (window.pageYOffset<299){backToPos="0px";}
+  else {backToPos="298px";}
+  $("body").animate({"scrollTop": backToPos}, 300);
+});
+$(function(){
+  $(window).scroll(function(){
+    if(window.pageYOffset<250 || $(window).width()<750){
+      $(".back-to-top").hide();
+    }else{
+      $(".back-to-top").show();
+    }
+  });
+});
+</script>
+    {% block funcript %}<!-- put script here -->{% endblock %}
+  
+  </body>
+</html>

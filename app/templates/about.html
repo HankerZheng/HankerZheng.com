@@ -13,25 +13,31 @@
 
 {% block beforehead %}
     {{super()}}
+    <script src="/static/js/showdown.min.js"></script>
+    <script src="/static/js/highlight.pack.js"></script>
+    <link rel="stylesheet" href="/static/css/github.css">
+    <script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}
 
 
 {% block content %}
-    {% for photo in photos %}
-        <div class="blog-post">
-            <img src="{{photo.path}}" style="height:500px;width:500px;">
-            <p class="blog-post-title">{{ photo.title }}</p>
-            <p>{{ photo.descript }}</p>
-            <p class="blog-post-meta">{{ photo.created_at|datetime }} at {{ photo.loc_name}}</p>
-        </div>
-    {% endfor %}
+<h3 class="archive-header">ABOUT ME</h3>
+<div class="blog-content">
+</div>
 {% endblock %}
 
 
 {% block funcript %}
     {{super()}}
 <script type="text/javascript">
-    navactive = document.getElementById("about")
-    navactive.className = "active"
+    navactive = document.getElementById("about");
+    navactive.className = "active";
+    $.get('/static/about.txt', function(data, status){
+        var converter = new showdown.Converter({'literalMidWordUnderscores': true, 'strikethrough':true})
+        $(".blog-content").html(converter.makeHtml(data));
+    });
+    $('pre code').each(function(i, block) {
+      hljs.highlightBlock(block);
+    });
 </script>
 {% endblock %}

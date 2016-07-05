@@ -14,6 +14,7 @@ _COOKIE_NAME = 'awesession'
 _COOKIE_KEY = configs.session.secret
 ARCHIVE_TIME = 0
 _RE_IDMATCH = re.compile('\W')  # re.search() not None when none-word in string
+_C_TIME = time.time()
 
 def get_archives(blogs=None):
     archives = []
@@ -260,6 +261,9 @@ def photo_edit(photo_id):
 @post('/admin_login')
 def get_login_info():
     logging.info("In Get Login Info!")
+    # log in request every one second
+    if (time.time() - _C_TIME) < 1.0:
+        raise seeother("/admin_login?failed=1")        
     i = ctx.request.input(username="", password="", remember="")
     user = User.find_first("where name=?", i.username)
     if user is None:

@@ -13,6 +13,10 @@
 
 {% block beforehead %}
     {{super()}}
+    <script src="/static/js/showdown.min.js"></script>
+    <script src="/static/js/highlight.pack.js"></script>
+    <link rel="stylesheet" href="/static/css/github.css">
+    <script>hljs.initHighlightingOnLoad();</script>
 {% endblock %}
 
 
@@ -42,8 +46,11 @@
     navactive.className = "active"
     $(function(){
         var txt = $(".blog-content").text();
-        var converter = new showdown.Converter({'literalMidWordUnderscores': true})
+        var converter = new showdown.Converter({'literalMidWordUnderscores': true, 'strikethrough':true})
         $(".blog-content").html(converter.makeHtml(txt));
+        $('pre code').each(function(i, block) {
+          hljs.highlightBlock(block);
+        });
         $('.blog-tags').each(function(){
             var info = $(this).text();
             info = JSON.parse(info);
