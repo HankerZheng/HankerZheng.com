@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+{% extends '/base_template/base.html' %}
+
+
+{% block metakeywords %}
+{% endblock %}
+
+
+{% block title %}
+    Admin Signin - {{super()}}
+{% endblock %}
+
+
+{% block beforehead %}
+<script src="/static/js/vue.min.js"></script>
+<style type="text/css">
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+.form-signin .checkbox {
+  font-weight: normal;
+}
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+.form-signin input[type="username"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+</style>
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+{% if failed %}
+<div class="alert alert-danger fade in">
+  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <strong>The username and password you entered did not match. Please double-check and try again.</strong>
+</div>
+{% endif %}
+
+<div id="alert_placeholder"></div>
+  <form class="form-signin" method="post" action="/admin_login">
+    <h2 class="form-signin-heading" style="text-align:center">Admin Sign-in</h2>
+    <label for="username" class="sr-only">Username</label>
+    <input type="username" id="username" v-model="username" class="form-control" placeholder="Username" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" id="inputPassword" v-model="password" class="form-control" placeholder="Password" required>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" v-model="remember" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button v-on:click="authenticate" id="sign-in-submit" class="btn btn-lg btn-primary btn-block form-signin">Sign in</button>
+  </form>
+
+</div> <!-- /container -->
+{% endblock %}
+
+
+{% block funcript %}
+{{super()}}
+<script src="../static/js/md5.min.js"></script>
+<script type="text/javascript">
+var vm;
+$(function(){
+    vm = new Vue({
+        el: '.form-signin',
+        data: {
+            username: '',
+            password: '',
+            remember: ''
+        },
+        methods: {
+            authenticate: function (event) {
+                event.preventDefault();
+                vm.password = md5($("#inputPassword").val(), "Hanker").toString();
+                $.post("/admin_login", this.$data, function(res,status,xhr){
+                    if(status=="success" && res=="4e1XAY58LV7C4"){
+                      window.location.pathname = "/manage/index";
+                    }else{
+                      window.location.search = "?failed=1";
+                    }
+                });
+            }
+        }
+    });
+});
+</script>
+{% endblock %}

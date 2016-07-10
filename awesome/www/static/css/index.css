@@ -1,0 +1,104 @@
+/*special color #e68019*/
+#content-container{
+  padding: 60px 0px 30px 0px;
+  min-height: 800px;
+}
+/* website icon */
+.iconlogo{
+  border: 2px;
+  border-style: solid;
+  border-radius: 3px 20px 3px 12px;
+  padding: 3px 3px 3px 7px;
+  font-family: Book Antiqua;
+  vertical-align:-20%;
+  font-variant:small-caps;
+  font-size:120%;
+  text-rendering: optimizeLegibility;
+}
+/* Jumbotron */
+.jumbotron {
+  color:black;
+  text-rendering: optimizeLegibility;
+  padding-top: 70px;
+  padding-bottom: 20px;
+  margin: 0;
+  background: url("/static/photos/index_cover2.jpg") no-repeat;
+  background-position: center;
+  min-height: 1100px;
+}.jumbotronName:hover{
+  -ms-transform: scale(1.25, 1.25); /* IE 9 */
+  -webkit-transform: scale(1.25, 1.25); /* Safari */
+  transform: scale(1.25, 1.25);
+}.jumbotronSay:hover{
+  -ms-transform: scale(1.25, 1.25); /* IE 9 */
+  -webkit-transform: scale(1.25, 1.25); /* Safari */
+  transform: scale(1.25, 1.25);
+}.jumbotronSayby:hover{
+  -ms-transform: scale(1.25, 1.25); /* IE 9 */
+  -webkit-transform: scale(1.25, 1.25); /* Safari */
+  transform: scale(1.25, 1.25);
+  padding-top:0.4em;
+}.jumbotronName{
+  text-shadow: 0 0 1px #AAA;
+  font-weight: bold;
+  padding-bottom: 0.8em;
+  font-family: Georgia,'Times New Roman','Microsoft YaHei','STHeiti',SimHei;
+  -webkit-transition: transform 1.3s; /* For Safari 3.1 to 6.0 */
+  transition: transform 1.3s;
+}.jumbotronSay{
+  font-family: Arial,'Times New Roman','Microsoft YaHei','STHeiti',SimHei;
+  padding-bottom: 0.6em;
+  -webkit-transition: transform 1.6s; /* For Safari 3.1 to 6.0 */
+  transition: transform 1.6s;
+}.myWords{
+  padding-bottom: 80px;
+}.indexCatagories{
+  padding-top: 2.4em;
+  padding-bottom: 1em;
+  margin-left: 1em;
+  margin-right: 1em;
+  background-color: #222;
+  border-radius: 1em;
+  color:#DDD;
+  opacity: 0.5;
+  min-height: 100px;
+  -webkit-transition: background-color 1.3s, opacity 1.3s; /* For Safari 3.1 to 6.0 */
+  transition: background-color 1.3s, opacity 1.3s;
+}.indexCatagories:hover{
+  cursor: pointer;
+  background-color: #e68019;
+  opacity: 0.9;
+}.indexCatagories p{
+  padding-top: 0.3em;
+  font-size: 1.7em;
+  font-family: Georgia;
+}
+/* navigation bar */
+.navbar {
+  border-radius: 0;
+  margin-bottom: 0;
+  border: 0;
+  font-size: 11px !important;
+  font-style: bold;
+  letter-spacing: 2px;
+  min-height: 54px;
+  box-shadow: #222 0 0 5px;
+}
+
+/* footer */
+.footer-text {
+  color: black;
+  font-size: 17px;
+  font-family: Georgia;
+  opacity:0.60;filter:alpha(opacity=60);
+  text-align: center;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height: auto;}
+}

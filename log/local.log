@@ -1,0 +1,103 @@
+Sun, 10 Jul 2016 16:12:32 db.py[line:148] INFO Init mysql engine <0x2eb3710L> ok.
+Sun, 10 Jul 2016 16:12:32 orm.py[line:145] INFO Scan ORMapping User...
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: name => <StringField:name,varchar(50),default(),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: admin => <BooleanField:admin,bool,default(False),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: created_at => <FloatField:created_at,real,default(<built-in function time>),I>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: password => <StringField:password,varchar(50),default(),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: id => <StringField:id,varchar(50),default(<function next_id at 0x0000000003249828>),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:163] WARNING NOTE: change primary key to non-updatable.
+Sun, 10 Jul 2016 16:12:32 orm.py[line:145] INFO Scan ORMapping Blog...
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: created_at => <FloatField:created_at,real,default(<built-in function time>),I>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: tags => <StringField:tags,varchar(150),default(),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: cr_year => <IntegerField:cr_year,smallint,default(0),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: title => <StringField:title,varchar(150),default(),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: summary => <TextField:summary,mediumtext,default(),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: content => <TextField:content,mediumtext,default(),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: cr_month => <IntegerField:cr_month,tinyint,default(0),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: id => <StringField:id,varchar(50),default(<function next_id at 0x0000000003249828>),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:163] WARNING NOTE: change primary key to non-updatable.
+Sun, 10 Jul 2016 16:12:32 orm.py[line:145] INFO Scan ORMapping Photo...
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: title => <StringField:title,varchar(150),default(),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: created_at => <FloatField:created_at,real,default(<built-in function time>),I>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: descript => <StringField:descript,varchar(200),default(),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: loc_lat => <FloatField:loc_lat,float(10,6),default(0.0),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: loc_lng => <FloatField:loc_lng,float(10,6),default(0.0),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: loc_name => <StringField:loc_name,varchar(150),default(),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: path => <StringField:path,varchar(100),default(),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: id => <StringField:id,varchar(50),default(<function next_id at 0x0000000003249828>),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:163] WARNING NOTE: change primary key to non-updatable.
+Sun, 10 Jul 2016 16:12:32 orm.py[line:145] INFO Scan ORMapping Tag...
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: count => <IntegerField:count,smallint,default(0),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: created_at => <FloatField:created_at,real,default(<built-in function time>),I>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: tag_name => <StringField:tag_name,varchar(50),default(),UI>
+Sun, 10 Jul 2016 16:12:32 orm.py[line:163] WARNING NOTE: change primary key to non-updatable.
+Sun, 10 Jul 2016 16:12:32 orm.py[line:156] INFO Found mapping: blogs => <TextField:blogs,text,default(),UI>
+Sun, 10 Jul 2016 16:12:32 web.py[line:1480] INFO Add module: urls
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(static,GET,path=/about)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(static,POST,path=/manage/api/blog_create)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(dynamic,GET,path=/manage/api/blog_delete/:blog_id)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(dynamic,POST,path=/manage/api/blog_edit/:blog_id)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(dynamic,GET,path=/manage/api/blog_get/:blog_id)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(static,POST,path=/manage/api/photo_create)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(dynamic,GET,path=/manage/api/photo_delete/:photo_id)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(dynamic,POST,path=/manage/api/photo_edit/:photo_id)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(dynamic,GET,path=/manage/api/photo_get/:photo_id)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(static,GET,path=/archives)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(static,GET,path=/manage/blog_create)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(dynamic,GET,path=/manage/blog_edit/:blog_id)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(static,GET,path=/manage/blog_edit)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(dynamic,GET,path=/blog/:blog_id)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(static,GET,path=/blogs)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(dynamic,GET,path=/tags/:tag_name)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(static,POST,path=/admin_login)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(static,GET,path=/)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(static,GET,path=/admin_login)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(static,GET,path=/manage/index)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(static,GET,path=/manage/photo_create)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(dynamic,GET,path=/manage/photo_edit/:photo_id)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(static,GET,path=/manage/photo_edit)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1499] INFO Add route: Route(static,GET,path=/photos)
+Sun, 10 Jul 2016 16:12:32 web.py[line:1504] INFO Add interceptor: <function manage_interceptor at 0x0000000003254978>
+Sun, 10 Jul 2016 16:12:32 web.py[line:1508] INFO application (C:\Users\Han\code\BlogWebApp\awesome\www) will start at 0.0.0.0:9000...
+Sun, 10 Jul 2016 16:12:38 web.py[line:1313] INFO return Template
+Sun, 10 Jul 2016 16:12:42 db.py[line:337] INFO SQL: select count(`id`) from `blogs`, ARGS: ()
+Sun, 10 Jul 2016 16:12:42 db.py[line:100] INFO open connection <0x32c7358L>...
+Sun, 10 Jul 2016 16:12:42 db.py[line:114] INFO close connection ,<0x32c7358L>...
+Sun, 10 Jul 2016 16:12:42 db.py[line:337] INFO SQL: select * from `blogs` order by created_at DESC limit %s,%s, ARGS: (0, 5)
+Sun, 10 Jul 2016 16:12:42 db.py[line:100] INFO open connection <0x32c7a20L>...
+Sun, 10 Jul 2016 16:12:42 db.py[line:114] INFO close connection ,<0x32c7a20L>...
+Sun, 10 Jul 2016 16:12:42 db.py[line:337] INFO SQL: select * from `tags`, ARGS: ()
+Sun, 10 Jul 2016 16:12:42 db.py[line:100] INFO open connection <0x32c79e8L>...
+Sun, 10 Jul 2016 16:12:42 db.py[line:114] INFO close connection ,<0x32c79e8L>...
+Sun, 10 Jul 2016 16:12:42 web.py[line:1313] INFO return Template
+Sun, 10 Jul 2016 16:12:49 db.py[line:337] INFO SQL: select count(`id`) from `photos`, ARGS: ()
+Sun, 10 Jul 2016 16:12:49 db.py[line:100] INFO open connection <0x30194a8L>...
+Sun, 10 Jul 2016 16:12:49 db.py[line:114] INFO close connection ,<0x30194a8L>...
+Sun, 10 Jul 2016 16:12:49 db.py[line:337] INFO SQL: select * from `photos` order by created_at DESC limit %s,%s, ARGS: (0, 12)
+Sun, 10 Jul 2016 16:12:49 db.py[line:100] INFO open connection <0x32c7860L>...
+Sun, 10 Jul 2016 16:12:49 db.py[line:114] INFO close connection ,<0x32c7860L>...
+Sun, 10 Jul 2016 16:12:49 db.py[line:337] INFO SQL: select * from `tags`, ARGS: ()
+Sun, 10 Jul 2016 16:12:49 db.py[line:100] INFO open connection <0x32c7358L>...
+Sun, 10 Jul 2016 16:12:49 db.py[line:114] INFO close connection ,<0x32c7358L>...
+Sun, 10 Jul 2016 16:12:49 web.py[line:1313] INFO return Template
+Sun, 10 Jul 2016 16:12:52 db.py[line:337] INFO SQL: select count(`id`) from `blogs`, ARGS: ()
+Sun, 10 Jul 2016 16:12:52 db.py[line:100] INFO open connection <0x3312390L>...
+Sun, 10 Jul 2016 16:12:52 db.py[line:114] INFO close connection ,<0x3312390L>...
+Sun, 10 Jul 2016 16:12:52 db.py[line:337] INFO SQL: select * from `blogs` order by created_at DESC limit %s,%s, ARGS: (0, 10)
+Sun, 10 Jul 2016 16:12:52 db.py[line:100] INFO open connection <0x33126d8L>...
+Sun, 10 Jul 2016 16:12:52 db.py[line:114] INFO close connection ,<0x33126d8L>...
+Sun, 10 Jul 2016 16:12:52 db.py[line:337] INFO SQL: select * from `tags`, ARGS: ()
+Sun, 10 Jul 2016 16:12:52 db.py[line:100] INFO open connection <0x33124e0L>...
+Sun, 10 Jul 2016 16:12:52 db.py[line:114] INFO close connection ,<0x33124e0L>...
+Sun, 10 Jul 2016 16:12:52 web.py[line:1313] INFO return Template
+Sun, 10 Jul 2016 16:12:56 web.py[line:1313] INFO return Template
+Sun, 10 Jul 2016 16:13:10 db.py[line:337] INFO SQL: select count(`id`) from `blogs`, ARGS: ()
+Sun, 10 Jul 2016 16:13:10 db.py[line:100] INFO open connection <0x32c7358L>...
+Sun, 10 Jul 2016 16:13:10 db.py[line:114] INFO close connection ,<0x32c7358L>...
+Sun, 10 Jul 2016 16:13:10 db.py[line:337] INFO SQL: select * from `blogs` order by created_at DESC limit %s,%s, ARGS: (0, 5)
+Sun, 10 Jul 2016 16:13:10 db.py[line:100] INFO open connection <0x32c7b70L>...
+Sun, 10 Jul 2016 16:13:10 db.py[line:114] INFO close connection ,<0x32c7b70L>...
+Sun, 10 Jul 2016 16:13:10 db.py[line:337] INFO SQL: select * from `tags`, ARGS: ()
+Sun, 10 Jul 2016 16:13:10 db.py[line:100] INFO open connection <0x3312710L>...
+Sun, 10 Jul 2016 16:13:10 db.py[line:114] INFO close connection ,<0x3312710L>...
+Sun, 10 Jul 2016 16:13:10 web.py[line:1313] INFO return Template

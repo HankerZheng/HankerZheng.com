@@ -1,0 +1,62 @@
+/*all blog infomation is '.blog-post' */
+/*title is 'h1.blog-title' */
+/*tags and created_at is 'div.blog-meta'*/
+/*content is 'article.blog-content'*/
+body{
+    font-size: 180%;
+    font-family:Arial,'Times New Roman',"Hiragino Sans GB",SimHei; 
+}
+
+.blog-title{
+    font-weight: bold;
+    font-size: 1.625em;
+    font-family: Georgia,'Times New Roman','Microsoft YaHei','STHeiti',SimHei;
+    padding-bottom: 15px;
+}.blog-meta{
+    font-family: Georgia;
+    font-size: 1em;
+}.blog-content{
+    line-height: 160%;
+    color: black;
+}.blog-content h1,.blog-content h2,.blog-content h3,.blog-content h4,.blog-content h5,.blog-content h6{
+    text-decoration:underline;
+    font-family: Georgia,'Times New Roman','Microsoft YaHei','STHeiti',SimHei;
+}.blog-content h1{
+    margin-top: 1.7em;
+    margin-bottom: 0.8em;
+    font-size: 1.475em;
+}.blog-content h2{
+    margin-top: 1.7em;
+    margin-bottom: 0.8em;
+    font-size: 1.325em;
+}.blog-content h3{
+    margin-top: 1.5em;
+    margin-bottom: 0.6em;
+    font-size: 1.125em;
+}.blog-content h4{
+    margin-top: 1.5em;
+    margin-bottom: 0.6em;
+    font-size: 1em;
+}.blog-content h5{
+    margin-top: 1.4em;
+    margin-bottom: 0.6em;
+    font-size: 1em;
+}.blog-content h6{
+    margin-top: 1.4em;
+    margin-bottom: 0.6em;
+    font-size: 1em;
+}.blog-content p, .blog-content ul{
+    color: #333;
+    font-family: Arial,"NSimSun","STSong",serif;
+    font-size: 0.925em;
+    margin-bottom: 1em;
+}.blog-content blockquote *{
+    font-size: 1em;
+    font-family: Tahoma,"Apple LiGothic Medium","Microsoft JhengHei",serif;
+}.blog-content pre{
+    font-size: 0.925em;
+}.blog-content blockquote{
+    border-left:5px solid #DDD;
+}.blog-content code{
+    background-color: #f0f0f0;
+}

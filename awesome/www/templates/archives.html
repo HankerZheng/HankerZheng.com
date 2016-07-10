@@ -1,0 +1,46 @@
+{% extends '/base_template/base.html' %}
+
+
+{% block metakeywords %}
+    {{super()}}
+{% endblock %}
+
+
+{% block title %}
+    Tags - {{super()}}
+{% endblock %}
+
+
+{% block beforehead %}
+    {{super()}}
+{% endblock %}
+
+
+{% block content %}
+<h3 class="archive-header">ARCHIVES</h3>
+<div class="archive-post">
+    {% for blog in blogs %}
+    <div class="row archive-item">
+        <div class="col-md-2 col-sm-3">
+            <p class="archive-time">{{blog.created_at | numdatetime}}</p>
+        </div>
+        <div class="col-md-10 col-sm-9">
+            <p class="archive-title"><a href="/blog/{{blog.id}}">{{blog.title}}</a></p>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}
+
+
+{% block funcript %}
+    {{super()}}
+<script type="text/javascript">
+    navactive = document.getElementById("archives");
+    navactive.className = "active";
+    $(document).ready(function(){
+        $(".archive-post").fadeIn(1500);
+    });
+</script>
+{% endblock %}

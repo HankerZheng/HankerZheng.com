@@ -1,0 +1,257 @@
+/*special color #e68019*/
+.outer-container{
+  background-color: #EEE;
+}
+#content-container{
+  padding: 60px 0px 30px 0px;
+  min-height: 800px;
+}#left-block {
+  background-color:transparent; 
+}#right-block{
+  background-color:transparent;
+  padding: 0;
+}
+/*right block*/
+.right-navbar{
+  color:#555;
+}.right-nav-seperator{
+  width: 100%;
+  height: 0px;
+  border-top: 1px dotted #d3d3d3;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}#right-container{
+  overflow-y: auto; 
+  font-size: 90%;
+  padding-left: 40px;
+  width: 300px;
+}#right-container h3{
+  font-size: 0.94em;
+  font-weight: bold;
+  font-family: Georgia, sans-serif;
+  margin-top: 0.3em;
+  margin-bottom: 0.6em;
+}.tag-list{
+  padding: 0;
+  list-style-type: none;
+}.tag-item{
+  color: #333;
+  line-height: 180%;
+  text-transform: capitalize;
+  font-family: Georgia, sans-serif;
+}.tag-item a{
+  color: #333;
+  -webkit-transition: color 0.6s; /* Safari */
+  transition: color 0.6s;
+}.tag-item a:hover{
+  color: #e68019;
+}#scareu{
+  display: none;
+  text-align: left;
+  font-family: Georgia, sans-serif;
+}#selfie{
+  width: 80%;
+}
+/*left block*/
+.blog-title a {
+  color: inherit;
+  -webkit-transition: color 0.6s; /* Safari */
+  transition: color 0.6s;
+}.blog-title a:hover{
+  color: #e68019;
+}.blog-meta{
+  color: #939393;
+}.blog-meta a{
+  color: #939393;
+  -webkit-transition: color 0.6s; /* Safari */
+  transition: color 0.6s;
+}.blog-meta a:hover{
+  color: #e68019;
+}.blog-tags a{
+  color:#e68019;
+  -webkit-transition: color 0.6s; /* Safari */
+  transition: color 0.6s;
+}.blog-tags a:hover{
+  color:#b86614;
+}.blog-summary{
+  max-height:200px;
+  overflow-y: hidden;
+  margin-bottom: 30px;
+}.readmore-btn{
+  padding: 5px 6px 5px 9px;
+  color: white;
+  background: #333333;
+  border-radius: 3px;
+  -webkit-transition: background 0.6s; /* Safari */
+  transition: background 0.6s;
+}.readmore-btn:hover{
+  color: white;
+  background: #e68019;
+}.meta-seperator{
+  width: 80%;
+  height: 0px;
+  margin-top: 10px;
+  border-top: 1px dashed #d3d3d3;
+  margin-bottom:30px;
+}.blog-seperator{
+  width: 95%;
+  height: 0px;
+  margin-top: 40px;
+  border-top: 1px solid #d3d3d3;
+  margin-bottom: 70px;
+}
+/*pagination*/
+#myPagination{
+  text-align: center;
+}#myPagination a{
+  color: #333;
+}#myPagination .active > a{
+  color: white;
+  background-color: #333;
+  border-color: #333;
+}
+/* website icon */
+.iconlogo{
+  border: 2px;
+  border-style: solid;
+  border-radius: 3px 20px 3px 12px;
+  padding: 3px 3px 3px 7px;
+  font-family: Book Antiqua;
+  vertical-align:-20%;
+  font-variant:small-caps;
+  font-size:120%;
+  text-rendering: optimizeLegibility;
+}
+/* back-to-top icon */
+.back-to-top {
+  z-index: 10;
+  color: grey;
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+  -webkit-transition: color 0.6s; /* Safari */
+  transition: color 0.6s;
+}.back-to-top:hover{
+  cursor: pointer;
+  color: #e68019;
+}
+/* affix-converning */
+.navbar.affix {
+    top: 0;
+    width: 100%;
+}.affix + .container-fluid {
+    padding-top: 54px;
+    z-index: -1
+}.jumbotron {
+  text-rendering: optimizeLegibility;
+  padding-top: 35px;
+  padding-bottom: 20px;
+  margin: 0;
+  background-color: #D0D0D0;
+  height: 300px;
+  font-family: Arial;
+/*  -webkit-transition: background-color 1.6s, color 2.6s, text-shadow 0.6s;  For Safari 3.1 to 6.0 
+  transition: background-color 1.6s, color 2.6s, text-shadow 0.6s;*/
+}.jumbotron:hover{
+/*  text-shadow: 0px 0px 1px #222; 
+  color: #ddd;
+  background-color: #222;*/
+}.jumbotron:hover #jumbotronName{
+  -ms-transform: scale(0.85, 0.85); /* IE 9 */
+  -webkit-transform: scale(0.85, 0.85); /* Safari */
+  transform: scale(0.85, 0.85);
+}.jumbotron:hover #jumbotronSay{
+  -ms-transform: scale(1.25, 1.25); /* IE 9 */
+  -webkit-transform: scale(1.25, 1.25); /* Safari */
+  transform: scale(1.25, 1.25);
+}.jumbotron:hover #jumbotronSayby{
+  -ms-transform: scale(1.05, 1.05); /* IE 9 */
+  -webkit-transform: scale(1.05, 1.05); /* Safari */
+  transform: scale(1.05, 1.05);
+  padding-top:0.4em;
+}#jumbotronName{
+  font-family: Georgia,'Times New Roman','Microsoft YaHei','STHeiti',SimHei;
+  margin-bottom:  16px;
+  -webkit-transition: transform 1.6s; /* For Safari 3.1 to 6.0 */
+  transition: transform 1.6s;
+}#jumbotronSay{
+  font-size: 1.2em;
+  -webkit-transition: transform 1.6s; /* For Safari 3.1 to 6.0 */
+  transition: transform 1.6s;
+}#jumbotronSayby{
+  -webkit-transition: transform 1.6s, padding-top 1.6s; /* For Safari 3.1 to 6.0 */
+  transition: transform 1.6s, padding-top 1.6s;
+}
+/* navigation bar */
+.navbar {
+  border-radius: 0;
+  margin-bottom: 0;
+  border: 0;
+  font-size: 11px !important;
+  font-style: bold;
+  letter-spacing: 2px;
+  min-height: 54px;
+  box-shadow: #222 0 0 5px;
+}
+/*photo gallery*/
+.photo-gallery {
+  padding:0 0 0 0;
+  margin:0 0 40px 0;
+  text-align: center;
+}.photo-gallery .photo-item {
+  list-style:none;
+  padding: 0;
+  align-content: center;
+  -webkit-transition: transform 0.6s; /* For Safari 3.1 to 6.0 */
+  transition: transform 0.6s;
+}.photo-gallery .photo-item:hover {
+  z-index: 1;
+  -ms-transform: scale(1.2, 1.2); /* IE 9 */
+  -webkit-transform: scale(1.2, 1.2); /* Safari */
+  transform: scale(1.2, 1.2);
+}
+/* archives */
+.archive-header{
+  font-weight: bold;
+  font-size: 30px;
+  margin-left: 0px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #000;
+  width: 80%;
+  margin-bottom: 30px;
+}.archive-post{
+  display: none;
+  padding-left: 40px;
+}.archive-time{
+  color:#999;
+  font-weight: bold;
+  font-family: Georgia;
+}.archive-title{
+  font-family: 'Microsoft YaHei';
+  display: block;
+  padding-left: 20px;
+  font-size: 1.1em;
+  margin-bottom: 20px;
+}.archive-title a{  
+  color: black;
+  -webkit-transition: color 0.6s; /* Safari */
+  transition: color 0.6s;
+}.archive-title a:hover{
+  color: #e68019;
+}
+/* footer */
+.footer-text {
+  color: black;
+  font-size: 17px;
+  font-family: Georgia;
+  opacity:0.60;filter:alpha(opacity=60);
+  text-align: center;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }.row.content {height: auto;}
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="Han Zheng's Blog">
+    <meta name="author" content="Han Zheng">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Awesome Font CSS -->
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <!-- customized CSS -->
+    <link rel="stylesheet" href="/static/css/index.css">
+    <!-- javascript -->
+    <script src="/static/js/jquery-1.11.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <title>Hanker Zheng's Home</title>
+  </head>
+
+  <body style="background-color:#FAF7FA">
+    <!-- Navigation Bar!! -->
+    <nav class="navbar navbar-inverse" style="z-index:10">
+      <!-- Define the container -->
+      <div class="container-fluid">
+        <!-- The header of the website -->
+        <!-- Define the responsive collapse button -->
+        <!-- Three <span> tags works as three-bar icon -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span> 
+          </button>
+          <a class="navbar-brand" href="/">
+            &nbsp;<strong class="iconlogo">Hanker</strong>
+          </a>
+        </div>
+        <!-- Then the list items of the navi-bar -->
+        <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li id="blogs"><a href="/blogs?page=1">
+                <i class="fa fa-newspaper-o fa-2x" aria-hidden="true"></i> BLOG
+            </a></li>
+            <li id="photos"><a href="/photos?page=1">
+                <i class="fa fa-camera-retro fa-2x" aria-hidden="true"></i> PHOTO
+            </a></li>
+            <li id="archives"><a href="/archives?page=1">
+                <i class="fa fa-archive fa-2x" aria-hidden="true"></i> ARCHIVE
+            </a></li>
+            <li id="about"><a href="/about">
+                <i class="fa fa-user fa-2x" aria-hidden="true"></i> ABOUT.ME
+            </a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- JUMBOTRON -->
+    <div class="jumbotron">
+      <div class="myWords container-fluid">
+        <h1 class="jumbotronName text-center">Han Zheng</h1>
+        <p class="jumbotronSay text-center">
+          每个程序猿上辈子一定是一个强大的魔法师！<br>
+          Every programmer must be a powerful magician in his last life!
+        </p>
+        <p class="jumbotronSay text-center">
+          不会弹吉他的程序猿不是一个优秀的电子工程师!<br>
+          A programmer who can't play the guitar well won't <br>
+          turn into an excellent electrical engineer!
+        </p>
+        <p class="jumbotronSay text-center">
+          人生苦短, 为何不用Python?<br>
+          Life is short, I use Python!
+        </p>
+        <p class="jumbotronSay text-center">
+          不独善其身, 何以兼济天下.<br>
+          Talk is cheap, work on the code!
+        </p>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="jumbotronSay text-center col-sm-4">
+            <div class="indexCatagories" href="/blogs?page=1">
+              <i class="fa fa-newspaper-o fa-5x" aria-hidden="true"></i>
+              <p>View My Blogs</p>
+            </div>
+          </div>
+          <div class="jumbotronSay text-center col-sm-4">
+            <div class="indexCatagories" href="/photos?page=1">
+              <i class="fa fa-camera-retro fa-5x" aria-hidden="true"></i>
+              <p>Photographs</p>
+            </div>
+          </div>
+          <div class="jumbotronSay text-center col-sm-4">
+            <div class="indexCatagories" href="/about">
+              <i class="fa fa-user fa-5x" aria-hidden="true"></i>
+              <p>More About Me</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- all the content after navbar comes in one container-fluid block -->
+    <div class="container-fluid">
+      <!-- footer -->
+      <footer class="panel panel-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-4 text-center">
+              <div class="btn-group">
+                <a class="btn btn-default" target="_blank" href="https://www.facebook.com/HankerZheng" title="Follow me on Facebook"><i class="fa fa-facebook-official fa-2x" aria-hidden="true"></i></a>
+                <a class="btn btn-default" target="_blank" href="https://github.com/HankerZheng" title="Follow me on Github"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+                <a class="btn btn-default" target="_blank" href="http://www.linkedin.com/in/hanzheng992" title="Follow me on LinkedIn"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+                <a class="btn btn-default" target="_blank" href="http://weibo.com/u/2529909465" title="Follow me on Weibo"><i class="fa fa-weibo fa-2x" aria-hidden="true"></i></a>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <p class="footer-text">Powered by <a target="_blank" href="http://www.liaoxuefeng.com/wiki/001374738125095c955c1e6d8bb493182103fac9270762a000/001397616003925a3d157284cd24bc0952d6c4a7c9d8c55000">Awesome Python Webapp</a>
+              &nbsp;&nbsp; &copy; 2016 Han Zheng</p>
+              <p class="footer-text">Photo gallery designed by <a target="_blank" href="https://github.com/michaelsoriano/bootstrap-photo-gallery">Michael Soriano</a></p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+<script>
+function resizeBackground(){  
+  var last = $('.indexCatagories:last');
+  var maxHeight = last.offset().top + last.height();
+  var element = $('.jumbotron');
+  element.height(maxHeight);
+  var jumbotronX = element.width();
+  var jumbotronY = element.height();
+  if (jumbotronX/4 > jumbotronY/3){
+    element.css('background-size', '100% auto');
+  }else{
+    element.css('background-size', 'auto 100%');
+  }  
+}
+$(document).ready(function(){
+  resizeBackground();
+  $(window).resize(function(){
+    resizeBackground();
+  });
+  $('.indexCatagories').click(function(){
+    window.location.href = $(this).attr("href");
+  })
+});
+</script>
+  </body>
+</html>

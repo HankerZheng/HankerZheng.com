@@ -1,3 +1,26 @@
+2016-07-10
+=================
+1. Deploymeng of Web App:
+    - on Linux, `sudo apt-get install nginx gunicorn python-gevent supervisor mysql-server`, and `sudo apt-get install python-jinja2 python-mysql.connector`
+    - on local machine, `pip install fabric`, and get `Cygwin`
+    - Nginx would run as www-data user as default, therefore we should give access to web file to www-data user and group;
+    - add `favicon.ico`
+
+2. Change the structure of the project files, making `/static/photos` a soft link
+
+3. Implement admin login through Vue.js rather than normal POST;
+
+4. Some changes applied:
+    - Right nav bar no longer stay fixed with the window;
+    - Jumbotron's background-color no longer change;
+    - change the font-family of blog title;
+    - When ready, the window would scroll to 297 rather than 300 so that 'back-to-top' button would work from the very beginning;
+    - Archive page and About page no longer have a negative margin!
+    - Change the background color to make it dimmer so that it would not be a light strike during the switch between `index` and content pages; 
+
+5. Index page!
+
+
 2016-07-05
 =================
 1. Shrink `jquery.bsPhotoGallery.js`
