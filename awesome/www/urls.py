@@ -12,7 +12,7 @@ from config import configs, Dict
 _COOKIE_NAME = 'awesession'
 _COOKIE_KEY = configs.session.secret
 ARCHIVE_TIME = 0
-_RE_IDMATCH = re.compile('\W')  # re.search() not None when none-word in string
+_RE_IDMATCH = re.compile('[\w-]+')  # re.search() not None when none-word in string
 _C_TIME = time.time()
 
 def get_archives(blogs=None):
@@ -30,10 +30,13 @@ def get_archives(blogs=None):
 
 def _id_check(id_for_check):
     str_id = str(id_for_check)
-    if _RE_IDMATCH.search(str_id):
-    # there is none-word word in id_for_check, fail the check
-        return False
-    return True
+    res = _RE_IDMATCH.search(str_id)
+    if res and len(res.group(0)) == len(str_id):
+        return True
+    return False
+
+def _exist_check(classname, identity):
+    return False if classname.get(identity) is None else True
 
 def make_signed_cookie(id, password, max_age):
     # build cookie string by: id-expires-md5
@@ -98,7 +101,7 @@ def index():
 @view('blogs.html')
 @get('/blogs')
 def blogs_all():
-    page = _get_page_info(item_type=Blog, page_size=5)
+    page = _get_page_info(item_type=Blog, page_size=7)
     blogs = Blog.find_by('order by created_at DESC limit ?,?', page.offset, page.limit)
     tags = Tag.find_all()
     return dict(blogs=blogs, page=page, tags=tags)
@@ -128,7 +131,7 @@ def blogs_in_tags(tag_name):
 
     tags = Tag.find_all()
     where = ''' where tags REGEXP '.+"%s".+' ''' % tag_name
-    page = _get_page_info(item_type=Blog, where=where, page_size=5)
+    page = _get_page_info(item_type=Blog, where=where, page_size=7)
     blogs = Blog.find_by((where +'order by created_at DESC limit ?,?'), page.offset, page.limit)
     tags = Tag.find_all()
     return dict(blogs=blogs, page=page, tags=tags)
@@ -332,7 +335,11 @@ def api_photo_get(photo_id):
 @post('/manage/api/blog_create')
 def api_blog_create():
     check_admin()
-    i = ctx.request.input(blogTitle="", blogTags="", blogSummary="", blogContent="")
+    i = ctx.request.input(blogID="", blogTitle="", blogTags="", blogSummary="", blogContent="")
+    blogid = i.blogID.strip()
+    if _exist_check(Blog, blogid):
+        return "This ID has already existed."
+
     title = i.blogTitle.strip()
     tags = [tag.strip() for tag in i.blogTags.split(';')]
     if not tags[-1]:
@@ -340,11 +347,12 @@ def api_blog_create():
     summary = i.blogSummary.strip()
     content = i.blogContent.strip()
 
-    blog = Blog(title=title, tags=json.dumps(tags), summary=summary, content=content)
+
+    blog = Blog(id=blogid, title=title, tags=json.dumps(tags), summary=summary, content=content)
     blog.insert()
     for tag in tags:
         _add_blog_to_tag(blog.id, tag)
-    return "Blog Create Successfully!"
+    return "Blog Created Successfully!!"
 
 
 @api
@@ -383,7 +391,7 @@ def api_blog_edit(blog_id):
     # add this blog to new_tags
     for tag in new_tags:
         _add_blog_to_tag(blog_id, tag)
-    return "Blog Edit Successfully!!"
+    return "Blog Edited Successfully!!"
 
 #--------------------------
 ### create or edit photo
@@ -459,3 +467,12 @@ def api_photo_delete(photo_id):
         raise APIResourceNotFoundError('Photo')
     photo.delete()
     return "Photo Delete Successfully!"
+
+#=============================================
+# Sitemap
+#=============================================
+@view('sitemap.xml')
+@get('/skymeraldmap')
+def sitemap_generator():
+    blogs = Blog.find_all()
+    return dict(blogs=blogs)

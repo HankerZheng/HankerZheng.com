@@ -8,22 +8,18 @@ Desktop.ini
 *.so
 *.egg
 *.egg-info
-dist
-build
 
-# bootstrap, font-awesome
-app/static/css/bootstrap*
-app/static/css/font-awesome*
-app/static/fonts/*
-app/static/js/bootstrap*
-app/static/js/jquery-1*
+# log file
+log*
+config.py
 
-# photos
-app/static/photos/*
+# ignored directory
+awesome/backup*
+awesome/conf*
+awesome/dist*
+awesome/log*
+awesome/photo*
 
-# less ans scss
-app/static/less/*
-app/static/scss/*
 
-# test
-app/test/*
+awesome/www/static/photos/*
+awesome/www/test*

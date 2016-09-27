@@ -3,6 +3,11 @@
 
 {% block metakeywords %}
     {{super()}}
+    <meta name="description" content="About Hanker Zheng. 每个程序猿上辈子一定是一个强大的魔法师！Every programmer must be a powerful witzard in his last life!" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="About Hanker Zheng. 每个程序猿上辈子一定是一个强大的魔法师！Every programmer must be a powerful witzard in his last life!"/>
+    <meta property="og:description" content="About Hanker Zheng. 每个程序猿上辈子一定是一个强大的魔法师！Every programmer must be a powerful witzard in his last life!"/>
+    <meta property="og:url" content="http://www.hankerzheng/about"/>
 {% endblock %}
 
 
@@ -24,6 +29,22 @@
 <h3 class="archive-header">ABOUT ME</h3>
 <div class="archive-post blog-content">
 </div>
+<div id="disqus_thread"></div>
+
+<script>
+    var disqus_config = function () {
+        this.page.url = "http://www.hankerzheng.com/about";
+        this.page.identifier = "about";
+    };
+    (function() {
+        var d = document, s = d.createElement('script');        
+        s.src = '//hankerzhengs.disqus.com/embed.js';        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
 {% endblock %}
 
 

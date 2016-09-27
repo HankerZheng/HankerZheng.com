@@ -1,18 +1,21 @@
 > 每个程序猿上辈子一定是一个强大的魔法师！  
-> Every programmer must be a powerful magician in his last life!
+> Every programmer must be a powerful witzard in his last life!
 
 
+**An Electric Engineering Majorred Alchemist Amazed at Witzard's World.**  
+**An Ordinary Person Longing to Make Self the Archmage of Python Someday.**
 
 
-<!-- 正式的介绍终于写完了 写的我尴尬症都犯了 终于到了想写什么就写什么的地方咯~ -->
-
+<!-- 
 犹记得4年前选专业时面对“计算机科学与技术”专业几个字的心里写照——“通宵 码字 过劳死”。  
 现在想来，哪个专业不是这样呢？同样是“通宵 码字 过劳死”，程序猿需求广，搞的东西还特么有意思！  
-By 程序猿需求, I mean 对程序猿的需求 not 程序猿的需求
+By 程序猿需求, I mean 对程序猿的需求 not 程序猿的需求 -->
 
 <!-- 为什么选EE？因为大一上了“C程序”差不多了解计算机，上了“工程图学”差不多知道机械是干嘛的，上了“普通化学”差不多知道能源、化学是干嘛的，上了“数学分析”差不多知道数学是干嘛的。诶？“光电”和“电子”这两个专业是研究什么的？ -->
+<!-- 正式的介绍终于写完了 写的我尴尬症都犯了 终于到了想写什么就写什么的地方咯~ -->
 
 ###Amazed at:
+- Python: `The most powerful magic art in the world!`
 - Electric Guitar: `Ibanez RG350MZ, Schecter Blackjack SLS C-1`
 - Monster Hunter(2, 2g, 4U): `听说X的盾斧不能无限GP了. Also why I am Genprey Skymerald`
 - ~~World of Tanks: `BL-10教你做大人`~~

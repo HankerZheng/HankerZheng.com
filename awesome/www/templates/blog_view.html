@@ -3,6 +3,11 @@
 
 {% block metakeywords %}
     {{super()}}
+    <meta name="description" content="{{blog.summary}}" />
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{blog.title}}"/>
+    <meta property="og:description" content="{{blog.summary}}"/>
+    <meta property="og:url" content="http://www.hankerzheng/blog/{{blog.id}}"/>
 {% endblock %}
 
 
@@ -33,9 +38,21 @@
     <div class="meta-seperator"></div>
         <article class="blog-content">{{ blog.content }}</article>
     <div class="blog-seperator"></div>
-
-
 </div>
+<div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+        this.page.url = "http://www.hankerzheng.com/blog/{{blog.id}}"
+        this.page.identifier = "{{ blog.id }}";
+    };
+    (function() {
+        var d = document, s = d.createElement('script');        
+        s.src = '//hankerzhengs.disqus.com/embed.js';        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
 {% endblock %}
 
 

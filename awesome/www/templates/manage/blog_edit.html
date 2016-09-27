@@ -17,6 +17,10 @@
 {% block content %}
 <form id="blogEditForm" role="form" v-on="submit: submit">
   <div class="form-group">
+    <label class="control-label sr-only" for="blogID">Blog ID:</label>
+    <input type="text" class="form-control" v-model="blogID" id="blogID" placeholder="Blog ID here...">
+  </div>
+  <div class="form-group">
     <label class="control-label sr-only" for="blogTitle">Blog Title:</label>
     <input type="text" class="form-control" v-model="blogTitle" id="blogTitle" placeholder="Blog Title here...">
   </div>
@@ -48,6 +52,7 @@ $(function(){
     vm = new Vue({
         el: '#blogEditForm',
         data: {
+            blogID: '',
             blogTitle: '',
             blogTags: '',
             blogSummary: '',
@@ -57,8 +62,12 @@ $(function(){
             postBlog: function (event) {
                 event.preventDefault();
                 $.post(post_url, this.$data, function(res,status,xhr){
-                    alert("Submit " + status + "!!");
-                    window.location.pathname = "/manage/blog_edit";
+                    if(status=="success" && (res=="Blog Edited Successfully!!" || res=="Blog Created Successfully!!")){
+                        alert(res);
+                        window.location.pathname = "/manage/blog_edit";
+                    }else{
+                        alert("Operation Failed! " + res);
+                    }
                 });
             }
         }
@@ -67,10 +76,12 @@ $(function(){
         post_url = '/manage/api/blog_create';
     }
     else{
+        $("#blogID").attr('readonly', 'true');
         this_id = window.location.pathname.substring(pre_length);
         post_url = '/manage/api/blog_edit/' + this_id;
         $.get('/manage/api/blog_get/'+this_id, function(data, status){
             if(status=='success'){
+                vm.blogID = data.id;
                 vm.blogTitle = data.title;
                 vm.blogTags = data.tags.join(';');
                 vm.blogSummary = data.summary;

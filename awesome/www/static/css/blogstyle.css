@@ -11,12 +11,13 @@ body{
     font-weight: bold;
     font-size: 1.625em;
     font-family: Georgia,'Times New Roman','Microsoft YaHei','STHeiti',SimHei;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
+    color:#444;
 }.blog-meta{
     font-family: Georgia;
     font-size: 1em;
 }.blog-content{
-    line-height: 160%;
+    line-height: 150%;
     color: black;
 }.blog-content h1,.blog-content h2,.blog-content h3,.blog-content h4,.blog-content h5,.blog-content h6{
     text-decoration:underline;
@@ -38,15 +39,17 @@ body{
     margin-bottom: 0.6em;
     font-size: 1em;
 }.blog-content h5{
+    text-decoration:none;
     margin-top: 1.4em;
     margin-bottom: 0.6em;
     font-size: 1em;
 }.blog-content h6{
+    text-decoration:none;
     margin-top: 1.4em;
     margin-bottom: 0.6em;
     font-size: 1em;
 }.blog-content p, .blog-content ul{
-    color: #333;
+    color: #000;
     font-family: Arial,"NSimSun","STSong",serif;
     font-size: 0.925em;
     margin-bottom: 1em;

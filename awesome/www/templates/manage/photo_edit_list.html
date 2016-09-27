@@ -113,8 +113,8 @@ $(function(){
     $('.btn-ok').click(function(){
         var deleteID = $("#confirm-delete .delete-id").text();
         $.get("/manage/api/photo_delete/"+deleteID, function(data, status){
-            if(status=='success' && data=="delete successfully!"){
-                alert("Delete successfully!!");
+            if(status=='success' && data=="Photo Delete Successfully!"){
+                alert(data);
                 window.location.pathname="/manage/photo_edit";
             }else{
                 alert("Deletion Failed!!");

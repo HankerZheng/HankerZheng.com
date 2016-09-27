@@ -1,8 +1,13 @@
-{% extends '/base_template/left_right.html' %}
+{% extends '/base_template/base.html' %}
 
 
 {% block metakeywords %}
     {{super()}}
+    <meta name="description" content="Hanker Zheng's Photo Gallery. 每个程序猿上辈子一定是一个强大的魔法师！Every programmer must be a powerful witzard in his last life!" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Hanker Zheng's Photo Gallery"/>
+    <meta property="og:description" content="Hanker Zheng's Photo Gallery. 每个程序猿上辈子一定是一个强大的魔法师！Every programmer must be a powerful witzard in his last life!"/>
+    <meta property="og:url" content="http://www.hankerzheng/photos"/>
 {% endblock %}
 
 
@@ -16,7 +21,7 @@
 {% endblock %}
 
 
-{% block left_content %}
+{% block content %}
 <ul class="photo-gallery">
     {% for photo in photos %}
     <li class="photo-item col-lg-4 col-md-4 col-sm-4 col-xs-6 col-xxs-6" data-bsp-li-index="{{loop.index0}}">
@@ -47,6 +52,8 @@
   </ul>
 </nav>
 {% endif %}
+
+
 {% endblock %}
 
 
@@ -58,7 +65,9 @@
         <div class="modal-content">
             <div class="modal-body">
                 <span class="glyphicon glyphicon-remove-circle" data-dismiss="modal"></span>
+                <div class="bsp-img-container">
                 <img class="img-responsive">
+                </div>
                 <div class="bsp-text-container">
                 </div>
                 <a class="bsp-controls next" data-bsp-id="generateId"><span class="glyphicon glyphicon-chevron-right"></span></a>

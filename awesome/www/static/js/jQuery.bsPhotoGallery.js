@@ -2,8 +2,11 @@
 // reposition modal
 function reposition() {
     var modal = $(".modal"),
-        dialog = modal.find('.modal-dialog');
+        dialog = modal.find('.modal-dialog'),
+        thisImg = dialog.find('img');
     modal.css('display', 'block');
+    dialog.css('min-width', $(window).width()*0.7);
+    thisImg.css('max-height', $(window).height()*0.9);
     dialog.css("margin-top", Math.max(0, ($(window).height() - dialog.height()) / 2));
 }
 
@@ -50,7 +53,7 @@ $.fn.bsPhotoGallery = function() {
         $('#bsPhotoGalleryModal .modal-body img').attr('src', clicked.img);
         
         if(alt !== null){
-          html += '<h6>'+alt+'</h6>'
+          html += '<h4>'+alt+'</h4>'
         }
         if(typeof pText !== 'undefined'){
           html += '<p class="pText">'+pText+'</p>'
@@ -59,7 +62,9 @@ $.fn.bsPhotoGallery = function() {
         $('.modal-body .previous').attr("href", clicked.prevImg)
         $('.bsp-text-container').html(html);
         showHideControls();
-        reposition();
+        $('.modal-body img').load(function(){
+          reposition();
+        });
     }
 
     function nextPrevHandler(){
@@ -85,7 +90,9 @@ $.fn.bsPhotoGallery = function() {
         }        
         
         $('.bsp-text-container').html(txt); 
-        reposition();
+        $('.modal-body img').load(function(){
+          reposition();
+        });
 
         clicked.prevImg = parseInt(index) - 1;
         clicked.nextImg = parseInt(clicked.prevImg) + 2;
@@ -107,8 +114,12 @@ $.fn.bsPhotoGallery = function() {
     var items = $(this).find('li');
     items.each(function(x){
       var theImg = $(this).find('img');
-        $(this).addClass('bspHasModal');
-        $(this).on('click', showModal);
+      if (theImg.attr('src').startsWith("/static/photos")){
+        var original = theImg.attr('src').split('_')[0];
+        theImg.attr('data-bsp-large-src', original+'_large.jpg');
+      }
+      $(this).addClass('bspHasModal');
+      $(this).on('click', showModal);
     });
     $('a.bsp-controls').on('click', nextPrevHandler);
     $(document).on('hidden.bs.modal', resetClicked);

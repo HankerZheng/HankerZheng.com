@@ -27,8 +27,12 @@
                 postPhoto: function (event) {
                     event.preventDefault();
                     $.post(post_url, this.$data, function(res,status,xhr){
-                        alert("Submit " + status + "!!");
-                        window.location.pathname = "/manage/photo_edit";
+                        if(status=="success" && (res=="Photo Edited Successfully!!" || res=="Photo Created Successfully!!")){
+                            alert(res);
+                            window.location.pathname = "/manage/photo_edit";
+                        }else{
+                            alert("Operation Failed!")
+                        }
                     });
                 }
             }

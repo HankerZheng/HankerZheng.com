@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /tags
+Disallow: /photos
+Disallow: /archives
+Sitemap: http://hankerzheng.com/skymeraldmap.xml

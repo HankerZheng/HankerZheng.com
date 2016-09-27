@@ -15,11 +15,14 @@ _TAR_FILE = 'dist-awesome.tar.gz'
 _REMOTE_TMP_TAR = '/tmp/%s' % _TAR_FILE
 _REMOTE_BASE_DIR = '/srv/awesome'
 
+_TAR_PHOTO = "dist-photo.tar.gz"
+_REMOTE_PHOTO_TAR = "/tmp/%s" % _TAR_PHOTO
+
 # Zip the target file, this function is executed locally
-def build():
-    includes = ['static', 'templates', 'transwarp', '*.py']
+def build_www():
+    includes = ['static', 'templates', 'transwarp', '*.py', 'robots.txt', '*.xml', '*.ico']
     # Ignore `test` file, invisible file, compied Python file
-    excludes = ['test', '.*', '*.pyc', '*.pyo']
+    excludes = ['test', '.*', '*.pyc', '*.pyo','photos']
     local('rm -f dist/%s' % _TAR_FILE)
     # lcd means `local cd`
     with lcd(os.path.abspath('www')):
@@ -29,7 +32,7 @@ def build():
         local(' '.join(cmd))
 
 # Deploy the file into remote server
-def deploy():
+def deploy_www():
     newdir = 'www-%s' % datetime.now().strftime('%y-%m-%d_%H%M%S')
     # Delete the original file
     run('rm -f %s' % _REMOTE_TMP_TAR)
@@ -59,5 +62,24 @@ def deploy():
         sudo('supervisorctl start awesome')
         sudo('/etc/init.d/nginx reload')
 
-def sudo_test():
-    sudo("mkdir /etc/supervisor/sudo_test")
+def build_photo():
+    includes = ['*.jpg']
+    excludes = ['raw', '*.py', '*.pyc']
+    local('rm -f dist/%s' % _TAR_PHOTO)
+    # lcd means `local cd`
+    with lcd(os.path.abspath('photo')):
+        cmd = ['tar', '--dereference', '-czvf', '../dist/%s'% _TAR_PHOTO]
+        cmd.extend(['--exclude=\'%s\'' % ex for ex in excludes])
+        cmd.extend(includes)
+        local(' '.join(cmd))
+
+def deploy_photo():
+    # Delete the original file
+    run('rm -f %s' % _REMOTE_PHOTO_TAR)
+    # Upload the dist file
+    put('dist/%s'%_TAR_PHOTO, _REMOTE_PHOTO_TAR)
+    with cd("/home/hanker/photos"):
+        sudo('tar -xzvf %s' % _REMOTE_PHOTO_TAR)
+
+    with cd("/home/hanker/"):
+        sudo('chown -R www-data:www-data photos')
