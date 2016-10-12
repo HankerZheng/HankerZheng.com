@@ -23,3 +23,5 @@ awesome/photo*
 
 awesome/www/static/photos/*
 awesome/www/test*
+
+fabfile.py
